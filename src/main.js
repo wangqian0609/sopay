@@ -9,6 +9,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+//表情
+import emotion from './emotion'
+// import App from './App.vue'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -27,5 +31,6 @@ new Vue({
   		const fromDepth = from.path.substring(0,from.path.length-2).split('/').length
   		this.transitionName = toDepth < fromDepth ? 'slide_back':'slide'
   	}
-  }
+  },
+  // render:h => h(App)
 })

@@ -1,220 +1,186 @@
-<template>
-	<div class="comment">
-		<header class="header">
-			<div class="header_inner flexWrap">
-				<div id="header_btn_nav" class="header_btn header_btn_back" v-on:click="goBack">返回</div>
-				<div class="header_cont flex">{{friend.friendsname}}</div>
-				<div class="header_btn header_btn_cart"></div>
-			</div>
-		</header>
-		<div class="comment_cont">
-			<div class="comment_chat">
-				<ul>
-					<li>
-						<span>{{user.username}}</span>
-						<label>你好~</label>
-					</li>
-					<li>
-						<label>你好~</label>
-						<span>{{friend.friendsname}}</span>
-					</li>
-				</ul>
-			</div>
-			<div class="comment_input">
-				<textarea rows="1"></textarea>
-				<input type="button" value="评论">
-			</div>
-		</div>
-	</div>
+ <template>
+	<wxChat :data = "wxChatData" :showShade="false" contactNickname="简叔" :getUpperData="getUpperData" :getUnderData="getUnderData" :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
 </template>
 <style lang="scss" type="text/css">
-	.flexWrap{
-		display:-webkit-flex;
-		display:flex;
-		.flex{
-			flex:1;
-		}
+	*{
+		margin:0;
+		padding:0;
 	}
-	.header{
-		height:0.88rem;
-		.header_inner{
-			position:fixed;
-			top:0;
-			left:0;
-			right:0;
-			z-index:99;
-			max-width:768px;
-			height:0.88rem;
-			margin:0 auto;
-			padding:0 .24rem;
-			border-bottom:.02rem solid #80ccd6;
-			background-color:#fff;
-		}
-		.header_btn{
-			width:1rem;
-			height:100%;
-			background-repeat:no-repeat;
-			font-size:15px;
-		}
-		.header_btn_back{
-			line-height:0.86rem;
-		}
-		.header_cont{
-			text-align:center;
-			padding:0 .4rem;
-			line-height:.86rem;
-			font-size:15px;
-			overflow:hidden;
-			text-overflow:ellipsis;
-			white-space:nowrap;
-		}
+	#app{
+		font-family:'Avenir',Helvetica,Arial,sans-serif;
+		-webkit-font-smoothing:antialiased;
+		-moz-osx-font-smoothing:grayscale;
+		text-align:center;
+		color:#2c3e50;
+		margin-top:60px;
 	}
-	.comment{
-		width:100%;
-		height:100%;
-		.comment_cont{
-			width:100%;
-			position:absolute;
-			top:0;
-			bottom:0;
-			.comment_chat{
-				width:100%;
-				overflow-y:scroll;
-				position:absolute;
-				top:.88rem;
-				bottom:1.5rem;
-				left:0;
-				ul{
-					width:100%;
-					padding:2% 5%;
-					li{
-						width:100%;
-						line-height:.44rem;
-						margin-bottom:2%;
-						span{
-							width:10%;
-							display:inline-block;
-							line-height:.44rem;
-							padding:2% 0;
-							font-size:15px;
-							color:#333;
-							vertical-align: top;
-						}
-						label{
-							max-width:70%;
-							min-width:40%;
-							display:inline-block;
-							position:relative;
-							line-height:.44rem;
-							padding: 2%;
-						    word-break: break-all;
-							font-size:15px;
-							color:#999;
-							background-color:#fff;
-							border-radius:5px;
-							vertical-align: top;
-						}
-						&:nth-child(2n+1){
-							float:left;
-							text-align:left;
-							label{
-								background-color:#fff;
-								&:before{
-									content:'';
-									width:0;
-									height:0;
-									display:inline-block;
-									position:absolute;
-									left:-5px;
-									top:50%;
-									border-left:5px solid transparent;
-									border-right:5px solid transparent;
-									border-bottom:10px solid #fff;
-									margin-top:-5px;
-
-								}
-							}
-						}
-						&:nth-child(2n){
-							float:right;
-							text-align:right;
-							label{
-								background-color:#9fe658;
-							}
-						}
-					}
-					&:after{
-						content:'';
-						clear:both;
-						height:0;
-					}
-				}
-			}
-			.comment_input{
-				width:100%;
-				height:1rem;
-				position:absolute;
-				bottom:0;
-				left:0;
-				background-color:#fff;
-				overflow:hidden;
-				textarea{
-					width: 73%;
-				    height: 100%;
-				    resize: none;
-				    display: inline-block;
-				    vertical-align: top;
-				    font-size: 15px;
-				    padding: 1% 2%;
-				    color:#666;
-				    outline:none;
-				    // border:none;
-				}
-				input{
-					width:20%;
-					height:70%;
-					float:right;
-					margin-top:2.5%;
-					margin-right:3%;
-					display:inline-block;
-					background-color: #80ccd6;
-					outline:none;
-				    border: none;
-				    border-radius: 5px;
-				    color:#fff;
-				    font-size:15px;
-				}
-			}
-		}
+	h1,h2{
+		font-weight:normal;
+	}
+	ul{
+		list-style-type:none;
+		padding:0;
+	}
+	li{
+		display:inline-block;
 	}
 </style>
 <script>
-	const demo = {username:'sa',userpass:'111'},
-	demo2 = {
-		friendsname:'sss',
-		content:[{
-				"ctype":1,
-				"cchat":"你好！！",
-				"ctime":"2018-05-15 09:34:00"
-			},{
-				"ctype":2,
-				"cchat":"不好~",
-				"ctime":"2018-05-15 09:34:30"
-			}]
-		};
+	import wxChat from '../components/wxChat.vue'
+
+	const demo = {
+		upperTimes: 0,
+		underTimes: 0,
+		upperId: 0,
+		underId: 6,
+		ownerAvatarUrl: '../src/assets/avatar1.png',
+		contactAvatarUrl: '../src/assets/avatar2.png',
+		wxChatData: [{
+			direction: 2,
+			id: 1,
+			type: 1,
+			content: '你好!![呲牙]',
+			ctime: new Date().toLocaleString()
+		},
+		{
+			direction: 1,
+			id: 2,
+			type: 1,
+			content: '你也好。[害羞]',
+			ctime: new Date().toLocaleString()
+		},
+		{
+			direction: 2,
+			id: 3,
+			type: 1,
+			content: '这是我的简历头像：',
+			ctime: new Date().toLocaleString()
+		},
+		{
+			direction: 2,
+			id: 4,
+			type: 2,
+			content: '../src/assets/wyz.jpg',
+			ctime: new Date().toLocaleString()
+		},
+		{
+			direction: 1,
+			id: 5,
+			type: 1,
+			content: '你开心就好。[微笑]',
+			ctime: new Date().toLocaleString()
+		}]
+	};
 	export default{
 		data(){
 			return{
-				user:demo,
-				friend:demo2
-				// user:this.$route.params.user,
-				// friend:this.$route.params.friends
+				upperTimes: 0,
+				underTimes: 0,
+				upperId: 0,
+				underId: 6,
+				ownerAvatarUrl: '../src/assets/avatar1.png',
+				contactAvatarUrl: '../src/assets/avatar2.png',
+				wxChatData: [{
+					direction: 2,
+					id: 1,
+					type: 1,
+					content: '你好!![呲牙]',
+					ctime: new Date().toLocaleString()
+				},
+				{
+					direction: 1,
+					id: 2,
+					type: 1,
+					content: '你也好。[害羞]',
+					ctime: new Date().toLocaleString()
+				},
+				{
+					direction: 2,
+					id: 3,
+					type: 1,
+					content: '这是我的简历头像：',
+					ctime: new Date().toLocaleString()
+				},
+				{
+					direction: 2,
+					id: 4,
+					type: 2,
+					content: '../src/assets/wyz.jpg',
+					ctime: new Date().toLocaleString()
+				},
+				{
+					direction: 1,
+					id: 5,
+					type: 1,
+					content: '你开心就好。[微笑]',
+					ctime: new Date().toLocaleString()
+				}]
 			}
 		},
-		created(){
-			
+		components:{
+			wxChat
 		},
 		methods:{
+			getUpperData(){
+				var me = this;
+				//这里为模拟异步加载数据，实际上可能要这样写
+				// return axios.get('xxx').then(function(result){
+				// 	return result;
+				// })
+				return new Promise(function(resolve){
+					setTimeout(function(){
+						if(me.upperTimes > 3){
+							return result([]);
+						}
+
+						resolve([{
+							direction:2,
+							id:me.upperId -1,
+							type:1,
+							content:'向上滚动加载第' + me.upperTimes + '条！',
+							ctime:new Date().toLocaleString()
+						},
+						{
+							direction:1,
+							id:me.upperId - 2,
+							type:1,
+							content:'向上滚动加载第' + me.upperTimes + '条',
+							ctime:new Date().toLocaleString()
+						}]
+						)
+					},1000);
+					me.upperId = me.upperId + 2;
+					me.upperTimes ++;
+				})
+			},
+			getUnderData(){
+				var me = this;
+				return new Promise(function(resolve){
+					setTimeout(function(){
+						if(me.underTimes > 3){
+							return resolve([]);
+						}
+						resolve(
+							[{
+								direction:1,
+								id:me.underId + 1,
+								type:1,
+								content:'向下滚动加载第' + me.underTimes + '条',
+								ctime:new Date().toLocaleString()
+							},
+							{
+								direction:2,
+								id:me.underId + 2,
+								type:1,
+								content:'向下滚动加载第' + me.underTimes + '条',
+								ctime:new Date().toLocaleString()
+							}]
+						)
+					},1000);
+					me.underId = me.underId + 2 ;
+					me.underTimes ++;
+				})
+			},
 			goBack(){
 				window.history.back()
 			}
