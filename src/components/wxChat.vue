@@ -40,6 +40,7 @@
 					</ul>
 				</div>
 			</ScrollLoader>
+			<div class="sendBox"></div>
 		</div>
 	</div>
 </template>
@@ -92,6 +93,7 @@
         color: #000;
         border-radius: 4px;
         box-shadow: 0px 1px 7px -5px #000;
+        vertical-align: top;
     }
     .message .avatar {
     	width: 45px;
@@ -100,6 +102,7 @@
         margin: 0 10px 0 0;
         border-radius: 3px;
         background: #fff;
+        display: flex;
     }
     .message .time>span {
         display: inline-block;
@@ -141,20 +144,36 @@
         max-width: 200px;
     }
     img.static-emotion-gif, img.static-emotion {
-        vertical-align: middle !important;
+        vertical-align: top !important;
     }
     .an-move-left{
         left: 0;
         animation: moveLeft .7s ease;
         -webkit-animation:moveLeft .7s ease; 
+        text-align:left;
+    }
+    .an-move-left .text{
+    	margin-left: 10px;
     }
     .an-move-right{
-        left: 0;
+        right: 0;
         animation: moveRight .7s ease;
-        -webkit-animation:moveRight .7s ease; 
+        -webkit-animation:moveRight .7s ease;
+        text-align:right; 
+    }
+    .an-move-right .text{
+    	margin-right: 10px;
     }
     .bgnone{
         background: none;
+    }
+    .sendBox{
+    	width:100%;
+    	height: 50px;
+    	background-color:pink;
+    	position: absolute;
+    	bottom: 0;
+    	left:0;
     }
     @keyframes moveRight{
         0%{left:-20px; opacity: 0};
@@ -202,10 +221,10 @@
 				type:String,
 				default:'#efefef'
 			},
-			maxHeight:{
-				type:Number,
-				// default:100
-			},
+			// maxHeight:{
+			// 	type:Number,
+			// 	// default:100
+			// },
 			contactAvatarUrl:{
 				type:String
 			},
@@ -230,6 +249,7 @@
 				isLoadedAll:false,
 
 				minHeight:700,
+				maxHeight:700,
 				dataArray:[]
 			}
 		},
