@@ -1,7 +1,8 @@
+ <!-- :getUnderData="getUnderData" -->
  <template>
-	<wxChat :data = "wxChatData" :showShade="false" contactNickname="简叔" :getUpperData="getUpperData" :getUnderData="getUnderData" :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
-</template>
-<style lang="scss" type="text/css">
+	<wxChat :data = "wxChatData" :showShade="false" contactNickname="简叔" :getUpperData="getUpperData"  :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
+</template> 
+<style lang="scss" scoped="scoped" type="text/css">
 	*{
 		margin:0;
 		padding:0;
@@ -39,35 +40,35 @@
 				contactAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png',
 				wxChatData: [{
 					direction: 2,
-					id: 1,
+					id: 7,
 					type: 1,
 					content: '你好!![呲牙]',
 					ctime: new Date().toLocaleString()
 				},
 				{
 					direction: 1,
-					id: 2,
+					id: 8,
 					type: 1,
 					content: '你也好。[害羞]',
 					ctime: new Date().toLocaleString()
 				},
 				{
 					direction: 2,
-					id: 3,
+					id: 9,
 					type: 1,
 					content: '这是我的简历头像：',
 					ctime: new Date().toLocaleString()
 				},
 				{
 					direction: 2,
-					id: 4,
+					id: 10,
 					type: 2,
 					content: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/wyz.jpg',
 					ctime: new Date().toLocaleString()
 				},
 				{
 					direction: 1,
-					id: 5,
+					id: 11,
 					type: 1,
 					content: '你开心就好。[微笑]',
 					ctime: new Date().toLocaleString()
@@ -106,38 +107,39 @@
 						}]
 						)
 					},1000);
+					console.log(me.upperId)
 					me.upperId = me.upperId + 2;
 					me.upperTimes ++;
 				})
 			},
-			getUnderData(){
-				var me = this;
-				return new Promise(function(resolve){
-					setTimeout(function(){
-						if(me.underTimes > 3){
-							return resolve([]);
-						}
-						resolve(
-							[{
-								direction:1,
-								id:me.underId + 1,
-								type:1,
-								content:'向下滚动加载第' + me.underTimes + '条',
-								ctime:new Date().toLocaleString()
-							},
-							{
-								direction:2,
-								id:me.underId + 2,
-								type:1,
-								content:'向下滚动加载第' + me.underTimes + '条',
-								ctime:new Date().toLocaleString()
-							}]
-						)
-					},1000);
-					me.underId = me.underId + 2 ;
-					me.underTimes ++;
-				})
-			},
+			// getUnderData(){
+			// 	var me = this;
+			// 	return new Promise(function(resolve){
+			// 		setTimeout(function(){
+			// 			if(me.underTimes > 3){
+			// 				return resolve([]);
+			// 			}
+			// 			resolve(
+			// 				[{
+			// 					direction:1,
+			// 					id:me.underId + 1,
+			// 					type:1,
+			// 					content:'向下滚动加载第' + me.underTimes + '条',
+			// 					ctime:new Date().toLocaleString()
+			// 				},
+			// 				{
+			// 					direction:2,
+			// 					id:me.underId + 2,
+			// 					type:1,
+			// 					content:'向下滚动加载第' + me.underTimes + '条',
+			// 					ctime:new Date().toLocaleString()
+			// 				}]
+			// 			)
+			// 		},1000);
+			// 		me.underId = me.underId + 2 ;
+			// 		me.underTimes ++;
+			// 	})
+			// },
 			goBack(){
 				window.history.back()
 			}

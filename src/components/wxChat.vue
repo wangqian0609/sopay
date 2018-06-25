@@ -18,7 +18,8 @@
 				<p v-text="contactNickname"></p>
 			</div>
 			<!--main-->
-			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" @scroll-to-bottom="infinite" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight - 100+'px'}">
+			<!-- @scroll-to-bottom="infinite" -->
+			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight - 100+'px'}">
 				 <div class="message">
                     <ul>
                         <li v-for="(message, index) in dataArray" :key="message.id" :class="message.direction==2?'an-move-right':'an-move-left'">
@@ -44,7 +45,10 @@
                 </div>
 			</ScrollLoader>
 			<div class="sendBox">
-				<!-- <img src="../assets/logo.png"> -->
+				<input type="text" class="input_word">
+                <button class="emotion_Btn">
+                    <img src="../assets/emotion.svg">
+                </button>
 			</div>
 		</div>
 	</div>
@@ -52,7 +56,7 @@
 <style scoped="scoped" type="text/css">
 	.wxchat-container{ width: 100%; height: 100%;z-index: 100; position: fixed; left:0; top: 0; overflow: hidden;}
     .shadow{ position: absolute; top:0; left: 0; z-index: 100; width: 100%; height: 100%; background: #000; opacity: .2; }
-    .window { width:100%; background: #F5F5F5; margin: 0 auto; overflow: hidden; padding: 0; height: 100%;position: relative;z-index: 101;}
+    .window { width:100%; background: #f1f1f1; margin: 0 auto; overflow: hidden; padding: 0; height: 100%;position: relative;z-index: 101;}
     button{border:0; background:none; border-radius: 0;text-align: center;}
     button{outline:none;}
     .w100{width: 100%;}
@@ -62,7 +66,24 @@
     .mb10{margin-bottom: 10px;}
     .mb20{margin-bottom: 20px;}
     .fs0{font-size: 0}
-    .title{background: #000; text-align: center; color:#fff; width: 100%; height: 50px; line-height: 50px; font-size: 14px;}
+    .title{
+        background: #fff; 
+        text-align: center; 
+        width: 100%;
+        height: 50px; 
+        line-height: 50px; 
+        margin:0 auto;
+        padding:0 .24rem;
+        font-size: 15px;
+        border-bottom: .02rem solid #80ccd6;
+     }
+     .title p{
+        text-align:center;
+        padding: 0 .4rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+     }
     .loading,.no-more{text-align: center; color: #b0b0b0; line-height: 100px;}
     .no-more{line-height: 60px;}
     .pull-right{float: right;}
@@ -71,7 +92,7 @@
         /*height: 100%;*/
         padding: 10px 15px;
         /*overflow-y: scroll;*/
-        background-color: #F5F5F5;
+        background-color: #f1f1f1;
     }
     .message li {
         margin-bottom: 15px;
@@ -115,7 +136,7 @@
         font-size: 12px;
         color: #fff;
         border-radius: 2px;
-        background-color: #DADADA;
+        background-color: #dadada;
     }
     .message .system>span{
         padding: 4px 9px;
@@ -137,13 +158,13 @@
         margin: 0 0 0 10px;
     }
     .message .self .text {
-        background-color: #9EEA6A;
+        background-color: #9eea6a;
     }
     .message .self .text:before {
         right: inherit;
         left: 100%;
         border-right-color: transparent;
-        border-left-color: #9EEA6A;
+        border-left-color: #9eea6a;
     }
     .message .image{
         max-width: 200px;
@@ -175,10 +196,37 @@
     .sendBox{
     	width:100%;
     	height: 50px;
-    	background-color:pink;
+    	background-color:#f9f9f9;
+        border-top:1px solid #ddd;
+        padding: 7.5px .24rem;
     	position: absolute;
     	bottom: 0;
     	left:0;
+    }
+    .sendBox .input_word{
+        width: 85%;
+        padding: 0 3%;
+        display: inline-block;
+        vertical-align: top;
+        height: 35px;
+        line-height: 35px;
+        font-size: 15px;
+        outline: none;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .sendBox .emotion_Btn{
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        vertical-align: top;
+        float: right;
+    }
+    .sendBox .emotion_Btn img{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
     }
     @keyframes moveRight{
         0%{left:-20px; opacity: 0};
@@ -224,7 +272,7 @@
 			},
 			wrapBg:{
 				type:String,
-				default:'#efefef'
+				default:'#f1f1f1'
 			},
 			// maxHeight:{
 			// 	type:Number,
@@ -240,15 +288,15 @@
 				type:Function,
 				required:true
 			},
-			getUnderData:{
-				type:Function,
-				required:true
-			}
+			// getUnderData:{
+			// 	type:Function,
+			// 	required:true
+			// }
 		},
 		data(){
 			return{
 				isUpperLoading:false,
-				isUnderLoading:false,
+				// isUnderLoading:false,
 
 				isRefreshedAll:false,
 				isLoadedAll:false,
@@ -297,32 +345,32 @@
 				me.isUpperLoading = false;
 			},
 			//向下拉加载
-			infinite(done){
-				var me = this;
-				if(me.isUnderLoading){
-					return;
-				}
-				if(me.isLoadedAll){
-					done(true);
-					me.isUnderLoading = false;
-					return;
-				}
-				try{
-					this.getUnderData().then(function(data){
-						if(data == 0){
-							me.isLoadedAll = true;
-							done(true);
-						}else{
-							done();
-							me.dataArray = me.dataArray.concat(data);
-						}
-					})
-				}
-				catch(error){
-					console.error('wxChat: props "getUnderData" must return a promise object')
-				}
-				me.isUnderLoading = false;
-			}
+			// infinite(done){
+			// 	var me = this;
+			// 	if(me.isUnderLoading){
+			// 		return;
+			// 	}
+			// 	if(me.isLoadedAll){
+			// 		done(true);
+			// 		me.isUnderLoading = false;
+			// 		return;
+			// 	}
+			// 	try{
+			// 		this.getUnderData().then(function(data){
+			// 			if(data == 0){
+			// 				me.isLoadedAll = true;
+			// 				done(true);
+			// 			}else{
+			// 				done();
+			// 				me.dataArray = me.dataArray.concat(data);
+			// 			}
+			// 		})
+			// 	}
+			// 	catch(error){
+			// 		console.error('wxChat: props "getUnderData" must return a promise object')
+			// 	}
+			// 	me.isUnderLoading = false;
+			// }
 		}
 	}
 </script>

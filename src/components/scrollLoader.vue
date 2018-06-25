@@ -7,10 +7,10 @@
 		<div :style="'min-height' + realMinHeight + 'px; overflow-x:hidden'">
 			<slot></slot>
 		</div>
-
-		<div class="loading" v-if="bottonLoading">
+		
+		<!-- <div class="loading" v-if="bottonLoading">
 			<div class="loader">加载中……</div>
-		</div>
+		</div> -->
 	</div>
 </template>
 <style lang="scss" scoped="scoped" type="text/css">
@@ -111,10 +111,10 @@
 		data(){
 			return{
 				topLoading:false,
-				bottonLoading:false,
+				// bottonLoading:false,
 
 				stopTopLoading:false,
-				stopBottonLoading:false,
+				// stopBottonLoading:false,
 			}
 		},
 		mounted(){
@@ -125,14 +125,14 @@
 				var me = this;
 				var topDone = (stopTopLoading) => {
 					me.topLoading = false;
-					if(stopTopLoading) me.stopTopLoading = true;
+					if(stopTopLoading) me.stopTopLoading = true; 
 
 				};
 
-				var bottonDone = (stopBottonLoading) => {
-					me.bottonLoading = false;
-					if(stopBottonLoading) me.stopBottonLoading = true;
-				};
+				// var bottonDone = (stopBottonLoading) => {
+				// 	me.bottonLoading = false;
+				// 	if(stopBottonLoading) me.stopBottonLoading = true;
+				// };
 
 				setTimeout(function(){
 					var scrollContainer = document.getElementById('scrollLoder-container');
@@ -141,12 +141,12 @@
 							if(me.topLoading) return;
 							me.topLoading = true;
 							me.$emit('scroll-to-top',topDone);
-							if((scrollContainer.offsetHeight + scrollContainer.scrollTop + 1 >= scrollContainer.scrollHeight) && !me.stopBottonLoading){
-								if(me.bottonLoading) return;
-								me.bottonLoading = true;
-								scrollContainer.scrollTop += 40;
-								me.$emit('scroll-to-botton',bottonDone);
-							}
+							// if((scrollContainer.offsetHeight + scrollContainer.scrollTop + 1 >= scrollContainer.scrollHeight) && !me.stopBottonLoading){
+							// 	if(me.bottonLoading) return;
+							// 	me.bottonLoading = true;
+							// 	scrollContainer.scrollTop += 40;
+							// 	me.$emit('scroll-to-botton',bottonDone);
+							// }
 						}
 					}
 				},50)
