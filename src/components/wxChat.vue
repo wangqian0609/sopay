@@ -371,6 +371,9 @@
 			// 	}
 			// 	me.isUnderLoading = false;
 			// }
+            sendWord(){
+                
+            }
 		}
 	}
 </script>
