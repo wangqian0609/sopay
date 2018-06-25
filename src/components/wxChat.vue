@@ -18,29 +18,34 @@
 				<p v-text="contactNickname"></p>
 			</div>
 			<!--main-->
-			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" @scroll-to-bottom="infinite" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight-100+'px'}">
-				<div class="message">
-					<ul>
-						<li v-for="(message,index) in dataArray" :key="message.id" :class="message.direction == 2?'an-move-right':'an-move-left'">
-							<p class="time"><span v-text="message.ctime"></span></p>
-							<p class="time system" v-if="message.type == 10000"><span v-html="message.content"></span></p>
-							<div :class="'main' + (message.direction == 2 ? 'self':'')" v-else>
-								<img class="avatar" :src="message.direction = 2 ? ownerAvatarUrl:contactAvatarUrl">
+			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" @scroll-to-bottom="infinite" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight - 100+'px'}">
+				 <div class="message">
+                    <ul>
+                        <li v-for="(message, index) in dataArray" :key="message.id" :class="message.direction==2?'an-move-right':'an-move-left'">
+                            <p class="time"> <span v-text="message.ctime"></span> </p>
+                            <p class="time system" v-if="message.type==10000"> <span v-html="message.content"></span> </p>
+                            <div :class="'main' + (message.direction==2?' self':'')" v-else>
+                                <img class="avatar" :src="message.direction==2? ownerAvatarUrl: contactAvatarUrl">
+                                <!-- 文本 -->
+                                <div class="text" v-emotion="message.content" v-if="message.type==1"></div>
 
-								<!-- 文本 -->
-								<div class="text" v-emotion="message.content" v-if="message.type == 1"></div>
-								<!-- 图片 -->
-								<div class="text" v-else-if="message.type == 2">
-									<img :src="message.content" class="image" alt="聊天图片">
-								</div>
-								<!-- 其它 -->
-								<div class="text" v-else-if="message.type != 10000" v-text="'[暂未支持的消息类型:' + message.type + ']\n\r' + message.content"></div>
-							</div>
-						</li>
-					</ul>
-				</div>
+                                <!-- 图片 -->
+                                <div class="text" v-else-if="message.type==2">
+                                    <img :src="message.content" class="image" alt="聊天图片">
+                                </div>
+
+                                <!-- 其他 -->
+                                <div class="text" v-else-if="message.type!=10000" v-text="'[暂未支持的消息类型:'+ message.type +']\n\r' + message.content">
+                                   
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 			</ScrollLoader>
-			<div class="sendBox"></div>
+			<div class="sendBox">
+				<!-- <img src="../assets/logo.png"> -->
+			</div>
 		</div>
 	</div>
 </template>

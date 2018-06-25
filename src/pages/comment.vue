@@ -28,49 +28,6 @@
 <script>
 	import wxChat from '../components/wxChat.vue'
 
-	const demo = {
-		upperTimes: 0,
-		underTimes: 0,
-		upperId: 0,
-		underId: 6,
-		ownerAvatarUrl: '../src/assets/avatar1.png',
-		contactAvatarUrl: '../src/assets/avatar2.png',
-		wxChatData: [{
-			direction: 2,
-			id: 1,
-			type: 1,
-			content: '你好!![呲牙]',
-			ctime: new Date().toLocaleString()
-		},
-		{
-			direction: 1,
-			id: 2,
-			type: 1,
-			content: '你也好。[害羞]',
-			ctime: new Date().toLocaleString()
-		},
-		{
-			direction: 2,
-			id: 3,
-			type: 1,
-			content: '这是我的简历头像：',
-			ctime: new Date().toLocaleString()
-		},
-		{
-			direction: 2,
-			id: 4,
-			type: 2,
-			content: '../src/assets/wyz.jpg',
-			ctime: new Date().toLocaleString()
-		},
-		{
-			direction: 1,
-			id: 5,
-			type: 1,
-			content: '你开心就好。[微笑]',
-			ctime: new Date().toLocaleString()
-		}]
-	};
 	export default{
 		data(){
 			return{
@@ -78,8 +35,8 @@
 				underTimes: 0,
 				upperId: 0,
 				underId: 6,
-				ownerAvatarUrl: '../src/assets/avatar1.png',
-				contactAvatarUrl: '../src/assets/avatar2.png',
+				ownerAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png',
+				contactAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png',
 				wxChatData: [{
 					direction: 2,
 					id: 1,
@@ -105,7 +62,7 @@
 					direction: 2,
 					id: 4,
 					type: 2,
-					content: '../src/assets/wyz.jpg',
+					content: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/wyz.jpg',
 					ctime: new Date().toLocaleString()
 				},
 				{
