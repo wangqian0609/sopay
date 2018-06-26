@@ -20,7 +20,7 @@
 			<!--main-->
 			<!-- @scroll-to-bottom="infinite" -->
 			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight - 100+'px'}">
-				 <div class="message">
+				 <div id="messageList" class="message">
                     <ul>
                         <li v-for="(message, index) in dataArray" :key="message.id" :class="message.direction==2?'an-move-right':'an-move-left'">
                             <p class="time"> <span v-text="message.ctime"></span> </p>
@@ -45,10 +45,11 @@
                 </div>
 			</ScrollLoader>
 			<div class="sendBox">
-				<input type="text" class="input_word">
+				<input type="text" class="input_word" v-model="NewMessageText">
                 <button class="emotion_Btn">
                     <img src="../assets/emotion.svg">
                 </button>
+                <button class="sendMessageBtn" @click="sendMessage">发送</button>
 			</div>
 		</div>
 	</div>
@@ -89,10 +90,13 @@
     .pull-right{float: right;}
     .link-line{text-decoration: underline;}
     .message{
+        width:100%;
         /*height: 100%;*/
         padding: 10px 15px;
         /*overflow-y: scroll;*/
         background-color: #f1f1f1;
+        display: inline-block;
+        position: relative;
     }
     .message li {
         margin-bottom: 15px;
@@ -204,7 +208,7 @@
     	left:0;
     }
     .sendBox .input_word{
-        width: 85%;
+        width: 65%;
         padding: 0 3%;
         display: inline-block;
         vertical-align: top;
@@ -221,12 +225,25 @@
         height: 35px;
         display: inline-block;
         vertical-align: top;
-        float: right;
+        /*float: right;*/
     }
     .sendBox .emotion_Btn img{
         width: 100%;
         height: 100%;
         display: inline-block;
+    }
+    .sendBox .sendMessageBtn{
+        width: 20%;
+        height: 35px;
+        line-height: 35px;
+        display: inline-block;
+        float: right;
+        background-color: #3dc312;
+        color: #fff;
+        border-radius: 5px;
+        letter-spacing: 3px;
+        font-size: 15px;
+        text-align: center;
     }
     @keyframes moveRight{
         0%{left:-20px; opacity: 0};
@@ -252,6 +269,7 @@
 </style>
 <script>
 	import ScrollLoader from './scrollLoader.vue'
+
 	export default{
 		name:"wxChat",
 		components:{
@@ -303,7 +321,9 @@
 
 				minHeight:700,
 				maxHeight:700,
-				dataArray:[]
+				dataArray:[],
+                nextMessageId:12,
+                NewMessageText:''
 			}
 		},
 		created(){
@@ -371,8 +391,22 @@
 			// 	}
 			// 	me.isUnderLoading = false;
 			// }
-            sendWord(){
-                
+            sendMessage(){
+                this.dataArray.push({
+                    direction: 2,
+                    id: this.nextMessageId++,
+                    type: 1,
+                    content: this.NewMessageText,
+                    ctime: new Date().toLocaleString()
+                })
+                this.scrollBottom();
+                this.NewMessageText = ''
+            },
+            scrollBottom(){
+                var Content = document.getElementById('messageList');
+                console.log(this.minHeight);
+                var scrollNumber = Content.clientHeight -this.minHeight + 254;
+                Content.style.transform = "translateY(-" + scrollNumber + "px)";
             }
 		}
 	}

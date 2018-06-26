@@ -4,7 +4,7 @@
 			<div class="loder">加载中……</div>
 		</div>
 
-		<div :style="'min-height' + realMinHeight + 'px; overflow-x:hidden'">
+		<div :style="'min-height' + realMinHeight + 'px; overflow-x:hidden'" class="container-div">
 			<slot></slot>
 		</div>
 		
@@ -19,6 +19,12 @@
 		overflow:auto;
 		overflow-x:hidden;
 		padding:0;
+		.container-div{
+			width: 100%;
+		    height: 100%;
+		    position: relative;
+			display: inline-block;
+		}
 	}
 	.loading{
 		width:100%;
