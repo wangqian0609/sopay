@@ -20,7 +20,7 @@
 			<!--main-->
 			<!-- @scroll-to-bottom="infinite" -->
 			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight - 100+'px'}">
-				 <div id="messageList" class="message">
+				 <div class="message" id="messageList">
                     <ul>
                         <li v-for="(message, index) in dataArray" :key="message.id" :class="message.direction==2?'an-move-right':'an-move-left'">
                             <p class="time"> <span v-text="message.ctime"></span> </p>
@@ -96,7 +96,7 @@
         /*overflow-y: scroll;*/
         background-color: #f1f1f1;
         display: inline-block;
-        position: relative;
+        position: absolute;
     }
     .message li {
         margin-bottom: 15px;
@@ -332,6 +332,7 @@
 		mounted(){
 			this.minHeight = document.getElementById('window-view-container').offsetHeight;
 			this.maxHeight = document.getElementById('window-view-container').offsetHeight;
+            this.scrollPosition();
 		},
 		methods:{
 			initData(){
@@ -404,9 +405,13 @@
             },
             scrollBottom(){
                 var Content = document.getElementById('messageList');
-                console.log(this.minHeight);
                 var scrollNumber = Content.clientHeight -this.minHeight + 254;
                 Content.style.transform = "translateY(-" + scrollNumber + "px)";
+            },
+            scrollPosition(){
+                var Content = document.getElementById('messageList');
+                var Number = Content.clientHeight - this.minHeight + 142;
+                Content.style.transform = "translateY(-" + Number + "px)";
             }
 		}
 	}

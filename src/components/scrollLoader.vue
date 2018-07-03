@@ -15,6 +15,9 @@
 </template>
 <style lang="scss" scoped="scoped" type="text/css">
 	.container-main{
+		width:100%;
+		height:100%;
+		display:inline-block;
 		margin:0 auto;
 		overflow:auto;
 		overflow-x:hidden;

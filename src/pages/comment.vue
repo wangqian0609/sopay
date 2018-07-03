@@ -107,7 +107,7 @@
 						}]
 						)
 					},1000);
-					console.log(me.upperId)
+					// console.log(me.upperId)
 					me.upperId = me.upperId + 2;
 					me.upperTimes ++;
 				})

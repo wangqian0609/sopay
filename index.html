@@ -78,7 +78,28 @@
     		}
     		resizeBaseFontSize();
     		window.addEventListener("resize",resizeBaseFontSize,false);
-    		window.addEventListener("orientationchange",resizeBaseFontSize,false)
+    		window.addEventListener("orientationchange",resizeBaseFontSize,false);
+            //禁止鼠标滚轮
+            function disableMouseWheel(){
+                if(document.addEventListener){
+                    document.addEventListener('DOMMouseScroll',scrollFunc,false);
+                }
+                // alert('aaa');
+                window.onmousewheel = document.onmousewheel = scrollFunc;
+            }
+            function scrollFunc(evt){
+                evt = evt || window.event;
+                if(evt.preventDefault){
+                    evt.preventDefault();
+                    evt.stopPropagation();
+                }
+                else{
+                    evt.cancelBubble = true;
+                    evt.returnValue = false;
+                }
+                return false;
+            }
+            disableMouseWheel();
     	})()
     </script>
     <!-- built files will be auto injected -->
