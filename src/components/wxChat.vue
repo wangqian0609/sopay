@@ -44,14 +44,14 @@
                     </ul>
                 </div>
 			</ScrollLoader>
-            <div class="emotion">  
+            <div class="emotion" v-show="isShow">  
                 <ul>
-                    <li v-for="list in lists" v-emotion="'[' + list + ']'" @click="inputEmotion">{{list}}</li>
+                    <li v-for="list in lists" :title="list" v-emotion="'[' + list + ']'" v-on:click="inputEmotion($event)" :key="list">{{list}}</li>
                 </ul>
             </div>
 			<div class="sendBox">
 				<input type="text" class="input_word" v-model="NewMessageText">
-                <button class="emotion_Btn">
+                <button class="emotion_Btn" @click="openEmotion">
                     <img src="../assets/emotion.svg">
                 </button>
                 <button class="sendMessageBtn" @click="sendMessage">发送</button>
@@ -347,6 +347,7 @@
                 nextMessageId:12,
                 NewMessageText:'',
                 lists,
+                isShow:false,
 			}
 		},
 		created(){
@@ -424,7 +425,8 @@
                     ctime: new Date().toLocaleString()
                 })
                 this.scrollBottom();
-                this.NewMessageText = ''
+                this.NewMessageText = '';
+                this.isShow = false;
             },
             scrollBottom(){
                 var Content = document.getElementById('messageList');
@@ -436,8 +438,13 @@
                 var Number = Content.clientHeight - this.minHeight + 142;
                 Content.style.transform = "translateY(-" + Number + "px)";
             },
-            inputEmotion(){
-                this.NewMessageText += this;
+            openEmotion(){
+                this.isShow = !this.isShow;
+            },
+            inputEmotion(e){
+                var oEmotion = e.currentTarget.title;
+                console.log(oEmotion);
+                this.NewMessageText += '[' + oEmotion + ']';
             }
 		}
 	}
