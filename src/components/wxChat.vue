@@ -13,10 +13,13 @@
 					<div>加载中……</div>
 				</div>
 			</div>
-
-			<div class="title" v-if="dataArray && dataArray.length > 0">
-				<p v-text="contactNickname"></p>
-			</div>
+            <header class="header">
+    			<div class="header_inner flexWrap" v-if="dataArray && dataArray.length > 0">
+                    <div id="header_btn_nav" class="header_btn header_btn_back" v-on:click="goBack">返回</div>
+    				<div class="header_cont flex" v-text="contactNickname"></div>
+                    <div class="header_btn header_btn_cart"></div>
+    			</div>
+            </header>
 			<!--main-->
 			<!-- @scroll-to-bottom="infinite" -->
 			<ScrollLoader :minHeight="minHeight" @scroll-to-top="refresh" class="container-main" v-if="dataArray && dataArray.length> 0 " :style="{maxHeight:maxHeight - 100+'px'}">
@@ -60,6 +63,48 @@
 	</div>
 </template>
 <style scoped="scoped" type="text/css">
+    .flexWrap{
+        display: -webkit-flex;
+        display: flex;
+    }
+    .flexWrap .flex{
+        flex: 1;
+    }
+    .header{
+        height: 50px;
+    }
+    .header_inner{
+        position:fixed;
+        background-color: #fff;
+        top:0;
+        left:0;
+        right:0;
+        z-index:99;
+        max-width:768px;
+        height:50px;
+        margin:0 auto;
+        padding:0 .24rem;
+        border-bottom:.02rem solid #80ccd6;
+        background-color:#fff;
+    }
+   .header_btn{
+        width:1rem;
+        height:100%;
+        background-repeat:no-repeat;
+        font-size:15px;
+    }
+   .header_btn_back{
+        line-height: 50px;
+    }
+   .header_cont{
+        text-align:center;
+        padding:0 .4rem;
+        line-height:50px;
+        font-size:15px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
 	.wxchat-container{ width: 100%; height: 100%;z-index: 100; position: fixed; left:0; top: 0; overflow: hidden;}
     .shadow{ position: absolute; top:0; left: 0; z-index: 100; width: 100%; height: 100%; background: #000; opacity: .2; }
     .window { width:100%; background: #f1f1f1; margin: 0 auto; overflow: hidden; padding: 0; height: 100%;position: relative;z-index: 101;}
@@ -97,7 +142,7 @@
     .message{
         width:100%;
         /*height: 100%;*/
-        padding: 10px 15px;
+        padding: 55px 15px 10px;
         /*overflow-y: scroll;*/
         background-color: #f1f1f1;
         display: inline-block;
@@ -445,6 +490,9 @@
                 var oEmotion = e.currentTarget.title;
                 console.log(oEmotion);
                 this.NewMessageText += '[' + oEmotion + ']';
+            },
+            goBack(){
+                window.history.back()
             }
 		}
 	}

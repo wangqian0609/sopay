@@ -140,9 +140,6 @@
 			// 		me.underTimes ++;
 			// 	})
 			// },
-			goBack(){
-				window.history.back()
-			}
 		}
 	}
 </script>
