@@ -57,7 +57,7 @@ export default new Router({
       component:person
     },
     {
-      path:'/comment',
+      path:'/comment/:user',
       name:'comment',
       component:comment
     }

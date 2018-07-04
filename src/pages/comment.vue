@@ -1,6 +1,6 @@
  <!-- :getUnderData="getUnderData" -->
  <template>
-	<wxChat :data = "wxChatData" :showShade="false" contactNickname="简叔" :getUpperData="getUpperData"  :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
+	<wxChat :data = "wxChatData" :showShade="false" :contactNickname="Nickname" :getUpperData="getUpperData"  :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
 </template> 
 <style lang="scss" scoped="scoped" type="text/css">
 	*{
@@ -38,6 +38,7 @@
 				underId: 6,
 				ownerAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png',
 				contactAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png',
+				Nickname:this.$route.params.friends,
 				wxChatData: [{
 					direction: 2,
 					id: 7,

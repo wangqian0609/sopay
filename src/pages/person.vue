@@ -8,7 +8,7 @@
 		</div>
 		<div class="friends">
 			<ul>
-				<li v-for="friend in friends" :name = "friend.friendsname" :id = "friend.id" @click = "goComment">
+				<li v-for="friend in friends" :name = "friend.friendsname" :id = "friend.id" @click = "goComment($event)">
 					{{friend.friendsname}}
 				</li>
 			</ul>
@@ -104,10 +104,10 @@
 			getout:function(){
 				this.$router.push({path:'/login'})
 			},
-			goComment:function(){
-				console.log(this.friends.id);
-				const id = this.friends.id;
-				this.$router.push({name:'comment',params:{user:this.person,friends:this.friends[id]}})
+			goComment:function(e){
+				console.log(e.currentTarget.innerText);
+				const id = e.currentTarget.innerText;
+				this.$router.push({name:'comment',params:{user:this.person,friends:id}})
 			}
 		}
 	}
