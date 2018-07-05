@@ -15,7 +15,7 @@
 			</div>
             <header class="header">
     			<div class="header_inner flexWrap" v-if="dataArray && dataArray.length > 0">
-                    <div id="header_btn_nav" class="header_btn header_btn_back" v-on:click="goBack">返回</div>
+                    <div id="header_btn_nav" class="header_btn header_btn_back" v-on:click="goBack()">返回</div>
     				<div class="header_cont flex" v-text="contactNickname"></div>
                     <div class="header_btn header_btn_cart"></div>
     			</div>
@@ -493,6 +493,7 @@
             },
             goBack(){
                 window.history.back()
+                // this.$router.push({name:'person',params:{user:this.userDatas}})
             }
 		}
 	}

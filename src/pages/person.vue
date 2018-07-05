@@ -97,6 +97,9 @@
 						console.log(this.friends);
 						return this.friends;
 					}
+					else{
+						alert('暂无数据');
+					}
 				}
 			})
 		},

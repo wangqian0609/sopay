@@ -34,30 +34,67 @@
 			"num":"0",
 			"name":"sa",
 			"passwd":"111",
+			"userUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png",
 			"lists":[
 				{
 					"id":"0",
 					"friendsname":"David",
+					"friendsUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png",
 					"content":[{
-						"ctype":1,
-						"cchat":"你好！！",
-						"ctime":"2018-05-15 09:34:00"
-					},{
-						"ctype":2,
-						"cchat":"不好~",
-						"ctime":"2018-05-15 09:34:30"
+						"direction": 2,
+						"id": 7,
+						"type": 1,
+						"content": "你好!![呲牙]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 1,
+						"id": 8,
+						"type": 1,
+						"content": "你也好。[害羞]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 9,
+						"type": 1,
+						"content": "这是我的简历头像：",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 10,
+						"type": 2,
+						"content": "https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/wyz.jpg",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 1,
+						"id": 11,
+						"type": 1,
+						"content": "你开心就好。[微笑]",
+						"ctime": "new Date().toLocaleString()"
 					}]
 				},
 				{
 					"id":"1",
 					"friendsname":"Mary",
+					"friendsUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png",
 					"content":[{
-						"ctype":1,
-						"cchat":"你好！！",
-						"ctime":""
+						"direction": 1,
+						"id": 7,
+						"type": 1,
+						"content": "你好!![呲牙]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 8,
+						"type": 1,
+						"content": "你也好。[害羞]",
+						"ctime": "new Date().toLocaleString()"
 					}]
-				}
-			]
+				}]
 		},
 		{
 			"num":"1",

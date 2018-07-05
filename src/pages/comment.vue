@@ -28,7 +28,7 @@
 </style>
 <script>
 	import wxChat from '../components/wxChat.vue'
-
+	var friendDatas = {},userDatas = {};
 	export default{
 		data(){
 			return{
@@ -36,48 +36,40 @@
 				underTimes: 0,
 				upperId: 0,
 				underId: 6,
-				ownerAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png',
-				contactAvatarUrl: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png',
+				ownerAvatarUrl:userDatas.userUrl,
+				contactAvatarUrl:friendDatas.friendsUrl,
 				Nickname:this.$route.params.friends,
-				wxChatData: [{
-					direction: 2,
-					id: 7,
-					type: 1,
-					content: '你好!![呲牙]',
-					ctime: new Date().toLocaleString()
-				},
-				{
-					direction: 1,
-					id: 8,
-					type: 1,
-					content: '你也好。[害羞]',
-					ctime: new Date().toLocaleString()
-				},
-				{
-					direction: 2,
-					id: 9,
-					type: 1,
-					content: '这是我的简历头像：',
-					ctime: new Date().toLocaleString()
-				},
-				{
-					direction: 2,
-					id: 10,
-					type: 2,
-					content: 'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/wyz.jpg',
-					ctime: new Date().toLocaleString()
-				},
-				{
-					direction: 1,
-					id: 11,
-					type: 1,
-					content: '你开心就好。[微笑]',
-					ctime: new Date().toLocaleString()
-				}]
+				wxChatData:friendDatas.content
 			}
 		},
 		components:{
 			wxChat
+		},
+		created(){
+			this.$http.get('/api/users').then((data) => {
+				// console.log(data.body.data);
+				var dataList = data.body.data,
+					user = this.$route.params.user,
+					friend = this.$route.params.friends;
+				for(var i = 0; i < dataList.length;i++){
+					if(dataList[i].name == user.username){
+						userDatas = dataList[i];
+						for(var j = 0 ; j < dataList[i].lists.length; j++){
+							if(dataList[i].lists[j].friendsname == friend){
+								friendDatas = dataList[i].lists[j];
+								console.log(friendDatas);
+								return friendDatas,userDatas;
+							}
+							else{
+								console.log('没有该好友');
+							}
+						}
+					}
+					else{
+						console.log('没有该用户');
+					}
+				}
+			})
 		},
 		methods:{
 			getUpperData(){
