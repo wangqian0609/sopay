@@ -16,7 +16,7 @@
             <header class="header">
     			<div class="header_inner flexWrap" v-if="dataArray && dataArray.length > 0">
                     <div id="header_btn_nav" class="header_btn header_btn_back" v-on:click="goBack()">返回</div>
-    				<div class="header_cont flex" v-text="contactNickname"></div>
+    				<div class="header_cont flex" v-text="contactNickname" :title="owner"></div>
                     <div class="header_btn header_btn_cart"></div>
     			</div>
             </header>
@@ -373,6 +373,9 @@
 				type:Function,
 				required:true
 			},
+            owner:{
+                type:String
+            }
 			// getUnderData:{
 			// 	type:Function,
 			// 	required:true
@@ -492,8 +495,11 @@
                 this.NewMessageText += '[' + oEmotion + ']';
             },
             goBack(){
-                window.history.back()
-                // this.$router.push({name:'person',params:{user:this.userDatas}})
+                var ownerInfo = {
+                    username:this.owner,
+                }
+                console.log(this.owner);
+                this.$router.push({name:'person',params:{user:ownerInfo}});
             }
 		}
 	}

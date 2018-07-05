@@ -1,6 +1,6 @@
  <!-- :getUnderData="getUnderData" -->
  <template>
-	<wxChat :data = "wxChatData" :showShade="false" :contactNickname="Nickname" :getUpperData="getUpperData"  :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
+	<wxChat :data = "wxChatData" :owner="ownerName" :showShade="false" :contactNickname="Nickname" :getUpperData="getUpperData"  :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="420"></wxChat>
 </template> 
 <style lang="scss" scoped="scoped" type="text/css">
 	*{
@@ -28,7 +28,10 @@
 </style>
 <script>
 	import wxChat from '../components/wxChat.vue'
-	var friendDatas = {},userDatas = {};
+	var member = {
+		friendsDatas:{},
+		userDatas:{}
+	}
 	export default{
 		data(){
 			return{
@@ -36,10 +39,11 @@
 				underTimes: 0,
 				upperId: 0,
 				underId: 6,
-				ownerAvatarUrl:userDatas.userUrl,
-				contactAvatarUrl:friendDatas.friendsUrl,
+				ownerAvatarUrl:member.userDatas.userUrl,
+				ownerName:member.userDatas.name,
+				contactAvatarUrl:member.friendsDatas.friendsUrl,
 				Nickname:this.$route.params.friends,
-				wxChatData:friendDatas.content
+				wxChatData:member.friendsDatas.content,
 			}
 		},
 		components:{
@@ -52,13 +56,14 @@
 					user = this.$route.params.user,
 					friend = this.$route.params.friends;
 				for(var i = 0; i < dataList.length;i++){
-					if(dataList[i].name == user.username){
-						userDatas = dataList[i];
+					if(dataList[i].name == user){
+						member.userDatas = dataList[i];
+						// console.log(datas.userDatas);
 						for(var j = 0 ; j < dataList[i].lists.length; j++){
 							if(dataList[i].lists[j].friendsname == friend){
-								friendDatas = dataList[i].lists[j];
-								console.log(friendDatas);
-								return friendDatas,userDatas;
+								member.friendsDatas = dataList[i].lists[j];
+								console.log(member);
+								return member;
 							}
 							else{
 								console.log('没有该好友');

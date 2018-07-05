@@ -8,7 +8,7 @@
 		</div>
 		<div class="friends">
 			<ul>
-				<li v-for="friend in friends" :name = "friend.friendsname" :id = "friend.id" @click = "goComment($event)">
+				<li v-for="friend in friends" :name = "friend.friendsname"  @click = "goComment($event)">
 					{{friend.friendsname}}
 				</li>
 			</ul>
@@ -98,7 +98,7 @@
 						return this.friends;
 					}
 					else{
-						alert('暂无数据');
+						// alert('暂无数据');
 					}
 				}
 			})
