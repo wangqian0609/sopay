@@ -349,7 +349,7 @@
 			},
 			data:{
 				type:Array,
-				required:true
+				required:true,
 			},
 			width:{
 				type:Number,

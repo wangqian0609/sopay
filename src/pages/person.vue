@@ -110,7 +110,7 @@
 			goComment:function(e){
 				console.log(e.currentTarget.innerText);
 				const id = e.currentTarget.innerText;
-				this.$router.push({name:'comment',params:{user:this.person,friends:id}})
+				this.$router.push({name:'comment',params:{user:this.person.username,friends:id}})
 			}
 		}
 	}
