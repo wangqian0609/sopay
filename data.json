@@ -104,19 +104,39 @@
 				{
 					"id":"0",
 					"friendsname":"小英",
+					"friendsUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png",
 					"content":[{
-						"ctype":1,
-						"cchat":"你好！！",
-						"ctime":""
+						"direction": 1,
+						"id": 7,
+						"type": 1,
+						"content": "你好!![呲牙]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 8,
+						"type": 1,
+						"content": "你也好。[害羞]",
+						"ctime": "new Date().toLocaleString()"
 					}]
 				},
 				{
 					"id":"1",
 					"friendsname":"小辉",
+					"friendsUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png",
 					"content":[{
-						"ctype":1,
-						"cchat":"你好！！",
-						"ctime":""
+						"direction": 1,
+						"id": 7,
+						"type": 1,
+						"content": "你好!![呲牙]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 8,
+						"type": 1,
+						"content": "你也好。[害羞]",
+						"ctime": "new Date().toLocaleString()"
 					}]
 				}
 			]
@@ -129,19 +149,39 @@
 				{
 					"id":"0",
 					"friendsname":"小强",
+					"friendsUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png",
 					"content":[{
-						"ctype":1,
-						"cchat":"你好！！",
-						"ctime":""
+						"direction": 1,
+						"id": 7,
+						"type": 1,
+						"content": "你好!![呲牙]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 8,
+						"type": 1,
+						"content": "你也好。[害羞]",
+						"ctime": "new Date().toLocaleString()"
 					}]
 				},
 				{
 					"id":"0",
 					"friendsname":"强仔",
+					"friendsUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar2.png",
 					"content":[{
-						"ctype":1,
-						"cchat":"你好！！",
-						"ctime":""
+						"direction": 1,
+						"id": 7,
+						"type": 1,
+						"content": "你好!![呲牙]",
+						"ctime": "new Date().toLocaleString()"
+					},
+					{
+						"direction": 2,
+						"id": 8,
+						"type": 1,
+						"content": "你也好。[害羞]",
+						"ctime": "new Date().toLocaleString()"
 					}]
 				}
 			]
