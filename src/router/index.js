@@ -9,6 +9,7 @@ import registerInfo from '@/pages/RegisterInfo'
 import login from '@/pages/login'
 import regist from '@/pages/regist'
 import person from '@/pages/person'
+import personData from '@/pages/personData'
 import comment from '@/pages/comment'
 
 
@@ -55,6 +56,11 @@ export default new Router({
       path:'/person',
       name:'person',
       component:person
+    },
+    {
+      path:'/personData',
+      name:'personData',
+      component:personData
     },
     {
       path:'/comment/:user',

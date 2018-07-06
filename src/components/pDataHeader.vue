@@ -2,7 +2,7 @@
 	<header class="header">
 		<div class="header_inner flexWrap">
 			<div id="header_btn_nav" class="header_btn header_btn_back" v-on:click="goBack">返回</div>
-			<div class="header_cont flex">评论</div>
+			<div class="header_cont flex">个人资料</div>
 			<div class="header_btn header_btn_cart"></div>
 		</div>
 	</header>
