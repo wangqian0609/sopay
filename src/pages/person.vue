@@ -1,10 +1,25 @@
 <template>
 	<div class="person">
-		<div class="person_icon">
-			<div class="icon" @click = "getout">
-				<img src="http://www.shiyi910.com/UploadFiles/2014-01/170/2014011322414554305.jpg">
+		<div class="headerNav">
+			<div class="menu" @click="showMenu">
+				<!-- <img src="https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/person.svg"> -->
+				<img src="../assets/person.svg">
 			</div>
-			<label>{{person.username}}</label>
+		</div>
+		<!--菜单列表-->
+		<div class="blankBg" v-show="isShow" @click="showMenu"></div>
+		<div class="operaList" v-show="isShow">
+			<div class="ownerInfo">
+				<div class="icon">
+					<img  :src="ownerUrl">
+				</div>
+				<label class="name">{{person.username}}</label>
+			</div>
+			<dl class="Lists">
+				<dd>个人资料</dd>
+				<dd>设置</dd>
+				<dd @click = "getout">退出</dd>
+			</dl>
 		</div>
 		<div class="friends">
 			<ul>
@@ -18,38 +33,83 @@
 <style lang="scss" type="text/css">
 	.person{
 		width:100%;
-		.person_icon{
+		.headerNav{
 			width:100%;
-			height:4.5rem;
-			padding: .5rem 10%;
+			height:1rem;
+			padding: .1rem 5%;
 			background-color:rgba(128,204,214,.8);
-			.icon{
-				width:2.5rem;
-				height:2.5rem;
-				border-radius:50%;
-				display: flex;
-			    overflow: hidden;
-			    justify-content: center;
-			    align-items: center;
-			    margin: auto;
+			.menu{
+				width:.6rem;
+				height:.6rem;
+				text-align:center;
+				margin-top: .1rem;
+				float:right;
 				img{
 					width:100%;
+					height:100%;
+					display: inline-block;
+					vertical-align: top;
 				}
 			}
-			label{
-				width:100%;
-				line-height:.9rem;
-				display:inline-block;
-				text-align:center;
-				font-size:20px;
-				color:#333;
-				vertical-align: top;
-			}
+		}
+		.operaList{
+			width: 70%;
+			display:inline-block;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    bottom:0;
+		    z-index:2;
+		    background-color:#fff;
+		    border-left:1px solid rgba(128,204,214,.8);
+		    .ownerInfo{
+		    	width:100%;
+		    	padding:.2rem 4%;
+		    	text-align:center;
+		    	background-color: rgb(128,204,214);
+		    	& > .icon{
+		    		width:1rem;
+		    		height:1rem;
+		    		border-radius:50%;
+		    		overflow:hidden;
+		    		display:-webkit-box;
+		    		display:flex;
+		    		justify-content:center;
+		    		align-items:center;
+		    		margin:auto;
+		    		img{
+		    			width:100%;
+		    			height:100%;
+		    			display:inline-block;
+		    		}
+		    	}
+		    	& > .name{
+		    		width:100%;
+		    		padding:1% 0;
+		    		line-height:.8rem;
+		    		display:block;
+		    		font-size:18px;
+		    		color:#333;
+		    	}
+		    }
+		    .Lists{
+		    	width:100%;
+		    	padding:0 10%;
+		    	dd{
+		    		width:100%;
+		    		height:.8rem;
+		    		line-height:.8rem;
+		    		display:block;
+		    		font-size:13px;
+		    		color:#666;
+		    		border-bottom:1px solid #ddd;
+		    	}
+		    }
 		}
 		.friends{
 			width:100%;
 			position:absolute;
-			top:4.5rem;
+			top:1rem;
 			bottom:0;
 			left:0;
 			background-color:#fff;
@@ -76,16 +136,30 @@
 			}
 		}
 	}
+	.blankBg{
+		width:100%;
+		// background-color:red;
+		z-index:1;
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+	}
 </style>
 <script>
-	var friends = [];
+	var owner = {
+		ownerIcon:'',
+		friends:[],
+	}
 	// var	demo = { username:'sa',userpass:'111111'};
 	export default{
 		data(){
 			return{
 				person:this.$route.params.user,
 				// person:demo,
-				friends:friends
+				friends:owner.friends,
+				ownerUrl:owner.ownerIcon,
+				isShow:false,
 			}
 		},
 		created(){
@@ -93,9 +167,9 @@
 				const userList = data.body.data;
 				for(var i = 0 ; i < userList.length ; i++){
 					if(userList[i].name == this.person.username){
-						this.friends = userList[i].lists;
-						console.log(this.friends);
-						return this.friends;
+						owner.ownerIcon = userList[i].userUrl;
+						owner.friends = userList[i].lists;
+						return owner;
 					}
 					else{
 						// alert('暂无数据');
@@ -111,6 +185,9 @@
 				console.log(e.currentTarget.innerText);
 				const id = e.currentTarget.innerText;
 				this.$router.push({name:'comment',params:{user:this.person.username,friends:id}})
+			},
+			showMenu:function(){
+				this.isShow =! this.isShow;
 			}
 		}
 	}
