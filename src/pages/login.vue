@@ -91,10 +91,10 @@
 				}
 				else{
 					this.$http.get('/api/users').then((data) =>{
-						this.users = data.body.data;
+						users = data.body.data;
 						var flat = false;
-						for(var i = 0 ;i < this.users.length; i++){
-							if(this.users[i].name == user.username && this.users[i].passwd == user.userpass){
+						for(var i = 0 ;i < users.length; i++){
+							if(users[i].name == user.username && users[i].passwd == user.userpass){
 								flat = true;
 								alert("登录成功！");
 								this.$router.push({name:'person',params:{user:user}});
