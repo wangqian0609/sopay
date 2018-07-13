@@ -5,7 +5,8 @@
 			<ul>
 				<li>
 					<span>头像：</span>
-					<img :src="ownerInfo.userUrl">
+					<img v-show="!isShow" id="personIcon" :src="ownerInfo.userUrl">
+					<img v-show="isShow" id="personIcon" :src="ownerInfo.userUrl" @click="ShowImage">
 				</li>
 				<li>
 					<span>用户名：</span>
@@ -28,6 +29,7 @@
 			</ul>
 			<input class="changeData" type="button" v-bind:value="change" @click="changeDatas()">
 		</div>
+		<imgUpload v-show="imageShow" :headerImage="ownerInfo.userUrl" @getHeaderImage="newHeaderImage"></imgUpload>
 	</div>
 </template>
 <style lang="scss" scoped="scoped" type="text/css">
@@ -115,6 +117,7 @@
 </style>
 <script type="text/javascript">
 	import pDataHeader from '../components/pDataHeader'
+	import imgUpload from '../components/imageupload'
 
 	var users = {},user = {name:'sa',userUrl:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png',age:'23',sex:'male'};
 	export default{
@@ -122,17 +125,19 @@
 			return{
 				ownerInfo:user,
 				isShow:false,
+				imageShow:true,
 				change:"修改"
 			}
 		},
 		created(){
 			this.$http.get('/api/users').then((data)=>{
 				users = data.body.data;
-				console.log(this);
+				// console.log(this);
 			})
 		},
 		components:{
-			pDataHeader
+			pDataHeader,
+			imgUpload
 		},
 		methods:{
 			changeDatas:function(){
@@ -143,6 +148,12 @@
 				else{
 					this.change = "修改";
 				}
+			},
+			newHeaderImage:function(newImg){
+				this.headerImage = newImg;
+			},
+			ShowImage:function(){
+				this.imageShow = !this.imageShow;
 			}
 		}
 	}
