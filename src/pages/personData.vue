@@ -29,7 +29,7 @@
 			</ul>
 			<input class="changeData" type="button" v-bind:value="change" @click="changeDatas()">
 		</div>
-		<imgUpload v-show="imageShow" :headerImage="ownerInfo.userUrl" @getHeaderImage="newHeaderImage"></imgUpload>
+		<imgUpload v-show="imageShow" :headerImage="ownerInfo.userUrl" :showUpload="imageShow" @getHeaderImage="newHeaderImage"></imgUpload>
 	</div>
 </template>
 <style lang="scss" scoped="scoped" type="text/css">
@@ -125,7 +125,7 @@
 			return{
 				ownerInfo:user,
 				isShow:false,
-				imageShow:true,
+				imageShow:false,
 				change:"修改"
 			}
 		},
