@@ -5,8 +5,10 @@
 			<ul>
 				<li>
 					<span>头像：</span>
-					<img v-show="!isShow" :src="ownerInfo.userUrl">
-					<img v-show="isShow" @click="ShowImage" :src="ownerInfo.userUrl">
+					<div class="icon">
+						<img v-show="!isShow" :src="ownerInfo.userUrl">
+						<img v-show="isShow" @click="ShowImage" :src="ownerInfo.userUrl">
+					</div>
 				</li>
 				<li>
 					<span>用户名：</span>
@@ -64,14 +66,21 @@
 						text-align:right;
 						float:right;
 					}
-					& > img{
+					& > .icon{
 						width:.9rem;
 						height:.9rem;
 						margin-top: .05rem;
+						border:1px solid #ddd;
 						border-radius:50%;
 						overflow:hidden;
 						display:inline-block;
 						float:right;
+						img{
+							width:100%;
+							height:100%;
+							display:inline-block;
+							vertical-align:top;
+						}
 					}
 					& > input{
 						width:70%;
