@@ -1,16 +1,16 @@
 <template>
 	<div class="changeIcon">
 		<div class="showIcon">
-			<img :src="headerImage">
+			<img :src="headIcon">
 		</div>
 		<dl class="iconList">
-			<dd v-for="icon in iconlists">
+			<dd v-for="icon in iconlists" @click="select(icon.url)">
 				<img :src="icon.url">
 			</dd>
 		</dl>
 		<div class="btnLists">
-			<input class="btn confirm" type="button" value="确定">
-			<input class="btn cancle" type="button" value="取消" @click="cancle">
+			<input class="btn confirm" type="button" value="确定" @click="change">
+			<input class="btn cancle" type="button" value="取消" @click="cancleImg">
 		</div>
 	</div>
 </template>
@@ -79,28 +79,40 @@
 	var icons = [{id:'0',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/0.png'},{id:'1',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/1.png'},{id:'2',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/2.png'},{id:'3',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/3.png'},{id:'4',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/4.png'},{id:'5',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/5.png'},{id:'6',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/6.png'},{id:'7',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/7.png'},{id:'8',url:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/8.png'}];
 
 	export default {
-	  props:{ 
-	    headerImage:{   //从user.vue父组件传过来数据库图片，即用户从本地上传的图片
-	      type:String,
-	      default:''
-	    },
-	    showUpload:{
-	    	type:Boolean,
-	    }
-	  },
+	  props:{
+	  	headerImage:{
+	  		type:String,
+	  		default:''	
+	  	}},
 	  data () {
 	    return {
 	     	iconlists:icons,
+	     	headIcon:this.headerImage,
 	    }
 	  },
 	  mounted () {
 	  },
-	  methods: {
-	  	cancle:function(){
-	  		this.showUpload = false;
+	  watch:{
+	  	iconChange(val){
+	  		this.headIcon = val;
 	  	},
+	  	headIcon(val){
+	  		this.$emit('on-icons',val);
+	  	}
+	  },
+	  methods: {
 	    postImg:function(){
 	     	console.log('上传成功');
+	    },
+	    select:function(element){
+	    	console.log(element);
+	    	this.headIcon = element;
+	    },
+	    cancleImg:function(){
+	    	this.$emit('showImage');
+	    },
+	    change:function(){
+	    	this.$emit('showImage');
 	    }
 	  }
 	}

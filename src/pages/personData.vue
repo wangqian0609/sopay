@@ -5,8 +5,8 @@
 			<ul>
 				<li>
 					<span>头像：</span>
-					<img v-show="!isShow" id="personIcon" :src="ownerInfo.userUrl">
-					<img v-show="isShow" id="personIcon" :src="ownerInfo.userUrl" @click="ShowImage">
+					<img v-show="!isShow" :src="ownerInfo.userUrl">
+					<img v-show="isShow" @click="ShowImage" :src="ownerInfo.userUrl">
 				</li>
 				<li>
 					<span>用户名：</span>
@@ -29,7 +29,7 @@
 			</ul>
 			<input class="changeData" type="button" v-bind:value="change" @click="changeDatas()">
 		</div>
-		<imgUpload v-show="imageShow" :headerImage="ownerInfo.userUrl" :showUpload="imageShow" @getHeaderImage="newHeaderImage"></imgUpload>
+		<imgUpload v-show="imageShow" :headerImage="ownerInfo.userUrl" @showImage="ShowImage" @on-icons="changeIcon"></imgUpload>
 	</div>
 </template>
 <style lang="scss" scoped="scoped" type="text/css">
@@ -154,6 +154,9 @@
 			},
 			ShowImage:function(){
 				this.imageShow = !this.imageShow;
+			},
+			changeIcon:function(val){
+				this.ownerInfo.userUrl = val;
 			}
 		}
 	}
