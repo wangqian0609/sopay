@@ -28,6 +28,7 @@
 				</li>
 			</ul>
 		</div>
+		<HomeFooter></HomeFooter>
 	</div>
 </template>
 <style lang="scss" type="text/css">
@@ -110,7 +111,7 @@
 			width:100%;
 			position:absolute;
 			top:1rem;
-			bottom:0;
+			bottom:1rem;
 			left:0;
 			background-color:#fff;
 			overflow-y:scroll;
@@ -147,6 +148,7 @@
 	}
 </style>
 <script>
+	import HomeFooter from '../components/HomeFooter.vue'
 	var owner = {
 		ownerIcon:'',
 		friends:[],
@@ -162,6 +164,9 @@
 				isShow:false,
 			}
 		},
+		components:{
+			HomeFooter
+		},
 		created(){
 			this.$http.get('/api/users').then((data) => {
 				const userList = data.body.data;
@@ -171,9 +176,9 @@
 						owner.friends = userList[i].lists;
 						return owner;
 					}
-					else{
-						alert('暂无数据');
-					}
+				}
+				if(owner == undefined){
+					alert('暂无数据');
 				}
 			})
 		},
