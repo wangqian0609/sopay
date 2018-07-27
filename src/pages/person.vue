@@ -16,7 +16,7 @@
 				<label class="name">{{person.username}}</label>
 			</div>
 			<dl class="Lists">
-				<dd>个人资料</dd>
+				<dd @click="goData">个人资料</dd>
 				<dd>设置</dd>
 				<dd @click = "getout">退出</dd>
 			</dl>
@@ -166,13 +166,13 @@
 			this.$http.get('/api/users').then((data) => {
 				const userList = data.body.data;
 				for(var i = 0 ; i < userList.length ; i++){
-					if(userList[i].name == this.person.username){
+					if(userList[i].name == this.person.name){
 						owner.ownerIcon = userList[i].userUrl;
 						owner.friends = userList[i].lists;
 						return owner;
 					}
 					else{
-						// alert('暂无数据');
+						alert('暂无数据');
 					}
 				}
 			})
@@ -188,6 +188,9 @@
 			},
 			showMenu:function(){
 				this.isShow =! this.isShow;
+			},
+			goData:function(){
+				this.$router.push({name:'personData',params:{user:this.person.name}})
 			}
 		}
 	}

@@ -35,6 +35,8 @@
 			"name":"sa",
 			"passwd":"111",
 			"userUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png",
+			"age":23,
+			"sex":"male",
 			"lists":[
 				{
 					"id":"0",
@@ -100,6 +102,9 @@
 			"num":"1",
 			"name":"bbb",
 			"passwd":"bbb",
+			"userUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png",
+			"age":23,
+			"sex":"male",
 			"lists":[
 				{
 					"id":"0",
@@ -145,6 +150,9 @@
 			"num":"2",
 			"name":"ccc",
 			"passwd":"ccc",
+			"userUrl":"https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/avatar1.png",
+			"age":23,
+			"sex":"male",
 			"lists":[
 				{
 					"id":"0",

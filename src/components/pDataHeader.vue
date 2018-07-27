@@ -52,9 +52,21 @@
 </style>
 <script>
 	export default{
+		props:{
+			gBdata:{
+				type:Object,
+				default:''
+			}
+		},
+		data(){
+			return{
+				personInfo:this.gBdata,
+			}
+		},
 		methods:{
 			goBack(){
-				window.history.back();
+				this.$router.push({name:'person',params:{user:this.personInfo}})
+				// window.history.back();
 			}
 		}
 	}

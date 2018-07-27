@@ -6,11 +6,11 @@
 				<ul class="login_ul">
 					<li>
 						<span>用户名:</span>
-						<input type="text" placeholder="请输入用户名" v-model="loginer.username">
+						<input type="text" placeholder="请输入用户名" v-model="loginer.name">
 					</li>
 					<li>
 						<span>密码:</span>
-						<input type="password" placeholder="请输入密码" v-model="loginer.userpass">
+						<input type="password" placeholder="请输入密码" v-model="loginer.passwd">
 					</li>
 				</ul>
 				<input type="button" class="login_btn" value="登录" @click="loginUser">
@@ -72,8 +72,8 @@
 		data(){
 			return{
 				loginer:{
-					username:'',
-					userpass:''
+					name:'',
+					passwd:''
 				}
 			}
 		},
@@ -83,10 +83,10 @@
 		methods:{
 			loginUser:function(){
 				user = this.loginer;
-				if(user.username == "" || user.username == "undefined"){
+				if(user.name == "" || user.name == "undefined"){
 					alert("请输入用户名和密码!");
 				}
-				else if(user.userpass =="" || user.userpass ==""){
+				else if(user.passwd =="" || user.passwd ==""){
 					alert("请输入用户名和密码!");
 				}
 				else{
@@ -94,7 +94,7 @@
 						users = data.body.data;
 						var flat = false;
 						for(var i = 0 ;i < users.length; i++){
-							if(users[i].name == user.username && users[i].passwd == user.userpass){
+							if(users[i].name == user.name && users[i].passwd == user.passwd){
 								flat = true;
 								alert("登录成功！");
 								this.$router.push({name:'person',params:{user:user}});

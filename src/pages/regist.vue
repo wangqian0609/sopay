@@ -1,3 +1,5 @@
+
+
 <template>
 	<div class="regist">
 		<regist-Header></regist-Header>

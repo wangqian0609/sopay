@@ -1,37 +1,37 @@
 <template>
 	<div class="personData-content">
-		<pDataHeader></pDataHeader>
+		<pDataHeader :gBdata="usersinfo"></pDataHeader>
 		<div class="personData">
 			<ul>
 				<li>
 					<span>头像：</span>
 					<div class="icon">
-						<img v-show="!isShow" :src="ownerInfo.userUrl">
-						<img v-show="isShow" @click="ShowImage" :src="ownerInfo.userUrl">
+						<img v-show="!isShow" :src="usersinfo.userUrl">
+						<img v-show="isShow" @click="ShowImage" :src="usersinfo.userUrl">
 					</div>
 				</li>
 				<li>
 					<span>用户名：</span>
-					<label v-show="!isShow">{{ownerInfo.name}}</label>
-					<input type="text" :placeholder="ownerInfo.name" v-show="isShow" v-model="ownerInfo.name">
+					<label v-show="!isShow">{{usersinfo.name}}</label>
+					<input type="text" :placeholder="usersinfo.name" v-show="isShow" v-model="usersinfo.name">
 				</li>
 				<li>
 					<span>性别：</span>
-					<label v-show="!isShow">{{ownerInfo.sex}}</label>
+					<label v-show="!isShow">{{usersinfo.sex}}</label>
 					<form class="sex" v-show="isShow">
-						<label><input type="radio" v-model="ownerInfo.sex" value="male">Male</label>
-						<label><input type="radio" v-model="ownerInfo.sex" value="female">Female</label>
+						<label><input type="radio" v-model="usersinfo.sex" value="male">Male</label>
+						<label><input type="radio" v-model="usersinfo.sex" value="female">Female</label>
 					</form>
 				</li>
 				<li>
 					<span>年龄：</span>
-					<label v-show="!isShow">{{ownerInfo.age}}</label>
-					<input type="number" :placeholder="ownerInfo.age" v-show="isShow" v-model="ownerInfo.age">
+					<label v-show="!isShow">{{usersinfo.age}}</label>
+					<input type="number" :placeholder="usersinfo.age" v-show="isShow" v-model="usersinfo.age">
 				</li>
 			</ul>
 			<input class="changeData" type="button" v-bind:value="change" @click="changeDatas()">
 		</div>
-		<imgUpload v-show="imageShow" :headerImage="ownerInfo.userUrl" @showImage="ShowImage" @on-icons="changeIcon"></imgUpload>
+		<imgUpload v-show="imageShow" :headerImage="usersinfo.userUrl" @showImage="ShowImage" @on-icons="changeIcon"></imgUpload>
 	</div>
 </template>
 <style lang="scss" scoped="scoped" type="text/css">
@@ -132,16 +132,22 @@
 	export default{
 		data(){
 			return{
-				ownerInfo:user,
+				ownerInfo:this.$route.params.user,
 				isShow:false,
 				imageShow:false,
-				change:"修改"
+				change:"修改",
+				usersinfo:users,
 			}
 		},
 		created(){
 			this.$http.get('/api/users').then((data)=>{
-				users = data.body.data;
-				// console.log(this);
+				const userList = data.body.data;
+				for(var i = 0 ; i < userList.length; i++){
+					if(userList[i].name == this.ownerInfo){
+						users = userList[i];
+						return users;
+					}
+				}
 			})
 		},
 		components:{

@@ -58,7 +58,7 @@ export default new Router({
       component:person
     },
     {
-      path:'/personData',
+      path:'/personData/:user',
       name:'personData',
       component:personData
     },

@@ -105,15 +105,17 @@
 	     	console.log('上传成功');
 	    },
 	    select:function(element){
-	    	console.log(element);
+	    	// console.log(element);
 	    	this.headIcon = element;
 	    },
 	    cancleImg:function(){
+	    	console.log(this.headerImage);
+	    	this.headIcon = this.headerImage;
 	    	this.$emit('showImage');
 	    },
 	    change:function(){
 	    	this.$emit('showImage');
-	    }
+	    } 
 	  }
 	}
 </script>
