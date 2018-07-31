@@ -28,7 +28,7 @@
 				</li>
 			</ul>
 		</div>
-		<HomeFooter></HomeFooter>
+		<HomeFooter :Index = 'userIndex'></HomeFooter>
 	</div>
 </template>
 <style lang="scss" type="text/css">
@@ -162,6 +162,7 @@
 				friends:owner.friends,
 				ownerUrl:owner.ownerIcon,
 				isShow:false,
+				userIndex:this.$route.params.user.name
 			}
 		},
 		components:{
