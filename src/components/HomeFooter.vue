@@ -59,7 +59,7 @@
 	export default{
 		props:{
 			Index:{
-				type:Object,
+				// type:Object,
 				default:''
 			}
 		},

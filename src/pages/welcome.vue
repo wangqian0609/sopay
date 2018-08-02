@@ -7,7 +7,7 @@
 				</div>
 				<div class="swiper-slide">
 					<input class="startBtn" type="button" value="立即开始" @click='goHome'>
-					<img src="../../src/assets/w1.jpg">
+					<img src="https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg">
 				</div>
 			</div>
 			<!--导航-->
@@ -36,6 +36,7 @@
 		    background: transparent;
 		    color: #fff;
 		    font-size: 18px;
+		    outline:none;
 		}
 		img{
 			width:100%;
@@ -47,18 +48,19 @@
 	//Swiper
 	import Swiper from '../../static/swiper.min.js'
 
-	var picList = [{img:'../../src/assets/w1.jpg'},{img:'../../src/assets/w1.jpg'},{img:'../../src/assets/w1.jpg'},{img:'../../src/assets/w1.jpg'},{img:'../../src/assets/w1.jpg'},{img:'../../src/assets/w1.jpg'}],user = '';
+	var picList = [{img:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg'},{img:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg'},{img:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg'},{img:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg'},{img:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg'},{img:'https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/w1.jpg'}];
 
 	export default{
 		data(){
 			return{
-				lists:picList
+				lists:picList,
+				useTag:'anoymous'
 			}
 		},
 		mounted(){
 			var mySwiper = new Swiper('.swiper-container',{
 				autoplay:true,
-				loop:true,
+				loop:false,
 				observer:true,
 				observerParents:true,
 				pagination: {
@@ -69,8 +71,7 @@
 		methods:{
 			goHome:function(){
 				this.$router.push({name:'Home',params:{
-					user:user
-				}})
+					user:this.useTag}})
 			}
 		}
 	}
