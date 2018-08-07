@@ -3,7 +3,9 @@
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" v-for="pic in lists">
-					<img :src = 'pic.img'>
+					<!-- <img :src = 'pic.img'> -->
+					<img :src='pic.img' v-bind:data-src='pic.img' v-bind:data-srcset='pic.img' class="swiper-lazy">
+					<div class="swiper-lazy-preloader"></div>
 				</div>
 				<div class="swiper-slide">
 					<input class="startBtn" type="button" value="立即开始" @click='goHome'>
@@ -12,6 +14,10 @@
 			</div>
 			<!--导航-->
 			<div class="swiper-pagination"></div>
+			<!-- 滚动条 -->
+			<div class="swiper-scrollbar"></div>
+			<!-- 虚拟 -->
+			<!-- <div class="swiper-wrapper"></div> -->
 		</div>
 	</div>
 </template>
@@ -59,13 +65,41 @@
 		},
 		mounted(){
 			var mySwiper = new Swiper('.swiper-container',{
-				autoplay:true,
+				autoplay:{
+					stopOnLastSlide: true,
+					disableOnInteraction: false,
+				},
 				loop:false,
 				observer:true,
 				observerParents:true,
-				pagination: {
-				      el: '.swiper-pagination',
+				watchOverflow:true,
+				effect : 'cube',
+				// effect : 'coverflow',
+				// slidesPerView: 3,
+				// centeredSlides: true,
+				// pagination: {
+				//       el: '.swiper-pagination',
+				//       type: 'progressbar',
+				//       progressbarOpposite: true,
+			 //    },
+			    scrollbar:{
+			    	el:'.swiper-scrollbar',
+			    	hide:true,
+			    	draggable:true
 			    },
+			    keyboard:{
+			    	enabled:true,
+			    },
+			    lazy:{
+			    	loadPrevNext:true,
+			    },
+			    zoom:{
+			    	maxRatio: 5,
+			    	toggle:false,
+			    },
+			    // virtual:{
+			    // 	slides:['slide 1','slide 2','slide 3','slide 4','slide 5']
+			    // }
 			})
 		},
 		methods:{
