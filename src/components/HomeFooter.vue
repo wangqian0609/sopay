@@ -7,6 +7,11 @@
 					<!-- <img src="https://raw.githubusercontent.com/wangqian0609/sopay/master/src/assets/home.svg"> -->
 				</div>
 			</dd>
+			<dd>
+				<div class="icon">
+					<img src="../assets/order.svg" title="订单">
+				</div>
+			</dd>
 			<dd @click="goChat">
 				<div class="icon">
 					<img src="../assets/chat.svg" title="聊天">
@@ -29,6 +34,7 @@
 		z-index:1;
 		& > dl{
 			width:100%;
+			height:100%;
 			display:-webkit-box;
 			dd{
 				width:auto;
