@@ -16,8 +16,8 @@
 					<input type="password" placeholder="PassWord" v-model="login.passwd">
 				</li>
 			</ul>
-			<input class="btn_login" type="button" value="Get Start">
-			<i class="alink_regist">Not a Member? SIGN UP</i>
+			<input class="btn_login" type="button" value="Get Start" @click="goLogin">
+			<i class="alink_regist" @click="goRegist">Not a Member? SIGN UP</i>
 		</form>
 		<dialog-bar v-model="sendVal" type="cancel" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Cancel"></dialog-bar>
 	</div>
@@ -140,7 +140,7 @@
 			clickConfirm(){
 				console.log('点击了确认');
 			},
-			login:function(){
+			goLogin:function(){
 				if( !this.login.name || !this.login.passwd){
 					this.maskTitle = 'Erro';
 					this.maskContent = 'Please follow the prompts to enter your account information！';
