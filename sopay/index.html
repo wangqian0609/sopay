@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <title>sopay</title>
+    <style type="text/css">
+    	*{
+    		margin: 0;
+    		padding: 0;
+    		box-sizing: border-box;
+    		-webkit-tap-highlight-color: transparent;
+    		-webkit-touch-callout: none;
+    	}
+    	html,body{
+    		width: 100%;
+    		height: 100%;
+    		background-color: #fff;
+            font-size: 16px;
+    	}
+    	ol,ul,li{
+    		list-style: none;
+    	}
+    	a{
+    		text-decoration: none;
+    		-webkit-tap-highlight-color: transparent;
+    	}
+    	input{
+            outline: none;
+    		-webkit-appearance: none;
+    	}
+    	#app{
+    		width: 100%;
+    		height: 100%;
+    	}
+    	/*路由效果*/
+    	.slide-enter,
+        .slide_back-enter {
+            position: absolute;
+            width: 100%;
+        }
+        .slide-leave,
+        .slide_back-leave {
+            position: absolute;
+            width: 100%;
+        }
+        .slide-enter-active,
+        .slide_back-enter-active {
+            transition: all 0.3s linear;
+        }
+        .slide-leave-active {
+            position: absolute;
+            transition: all 0.3s linear;
+            transform: translate(-100%);
+        }
+        .slide-enter{
+            transform: translateX(100%);
+        }
+        .slide_back-leave-active {
+            position: absolute;
+            transition: all 0.3s linear;
+            transform: translate(100%);
+        }
+        .slide_back-enter {
+            transform: translateX(-100%);
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+    	<transition :name="transitionName">
+    		<router-view></router-view>
+    	</transition>
+    </div>
+    <!-- built files will be auto injected -->
+    <script type="text/javascript">
+    	function resizeBaseFontSize(){
+            var rootHtml = document.documentElement,
+                deviceWidth = rootHtml.clientWidth;
+            if( deviceWidth > 768 ){
+                deviceWidth = 375;
+            }
+            rootHtml.style.fontSize = deviceWidth/3.75 + 'px';
+        }
+        resizeBaseFontSize();
+        window.addEventListener("resize",resizeBaseFontSize,false);
+        window.addEventListener("orientationchange",resizeBaseFontSize,false);
+
+        function disableMouseWheel(){
+            if(document.addEventListener){
+                document.addEventListener('DOMMouseScroll',scrollFunc,false);
+            }
+            window.onmousewheel = document.onmousewheel = scrollFunc;
+        }
+        function scrollFunc(evt){
+            evt = evt || window.event;
+            if(evt.preventDefault){
+                evt.preventDefault();
+                evt.stopPropagation();
+            }
+            else{
+                evt.cancelBubble = false;
+                evt.returnValue = false;
+            }
+            return false;
+        }
+        disableMouseWheel();
+    </script>
+  </body>
+</html>
