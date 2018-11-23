@@ -19,7 +19,7 @@
 			<input class="btn_login" type="button" value="Get Start">
 			<i class="alink_regist">Not a Member? SIGN UP</i>
 		</form>
-		<dialog-bar v-model="sendVal" type="danger" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Delete"></dialog-bar>
+		<dialog-bar v-model="sendVal" type="cancel" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Cancel"></dialog-bar>
 	</div>
 </template>
 <style type="text/css" lang="scss">
@@ -139,7 +139,6 @@
 			},
 			clickConfirm(){
 				console.log('点击了确认');
-				this.$router.push({name:'Home',params:{user:this.login.name}});
 			},
 			login:function(){
 				if( !this.login.name || !this.login.passwd){
@@ -148,9 +147,7 @@
 					this.openMask();
 				}
 				else{
-					this.maskTitle = "Welcome";
-					this.maskContent = '',
-					this.openMask();
+					this.$router.push({name:'Home',params:{user:this.login.name}});
 				}
 			},
 			goRegist:function(){
