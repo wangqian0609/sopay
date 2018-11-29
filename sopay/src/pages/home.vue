@@ -13,13 +13,13 @@
 			<div class="shopPart">
 				<h1>SALE</h1>
 				<h3>GET UP TO 60% OFF</h3>
-				<input type="button" value="Shop NoW">
+				<input type="button" value="Shop NoW" @click="goContent('shop')">
 			</div>
 		</div>
 		<dl class="ShopBtn">
-			<dd>Male</dd>
-			<dd>Female</dd>
-			<dd>Kids</dd>
+			<dd @click="goContent('Male')">Male</dd>
+			<dd @click="goContent('Female')">Female</dd>
+			<dd @click="goContent('Kids')">Kids</dd>
 		</dl>
 	</div>
 </template>
@@ -126,7 +126,8 @@
 	export	default{
 		data(){
 			return{
-				shopList:[{img:'https://a.icons8.com/pidjqWdg/XwTVZm/bitmap.png'},{img:'https://a.icons8.com/pidjqWdg/EdQAdi/bitmap.png'},{img:'https://a.icons8.com/pidjqWdg/O2GEmA/bitmap.png'}]
+				shopList:[{img:'https://a.icons8.com/pidjqWdg/XwTVZm/bitmap.png'},{img:'https://a.icons8.com/pidjqWdg/EdQAdi/bitmap.png'},{img:'https://a.icons8.com/pidjqWdg/O2GEmA/bitmap.png'}],
+				logger:this.$route.params.user
 			}
 		},
 		components:{
@@ -144,6 +145,12 @@
 					clickable:true
 				}
 			})
+		},
+		methods:{
+			goContent:function(target){
+				// console.log(this.logger)
+				this.$router.push({name:'List',params:{type:target,user:this.logger}})
+			}
 		}
 	} 
 </script>
