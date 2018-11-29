@@ -16,7 +16,7 @@
 		</div>
 	</div>
 </template>
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped="">
 	@import '../common/fonts/font.css';
 
 	.welContent{

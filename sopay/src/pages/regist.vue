@@ -41,7 +41,7 @@
 		<dialog-bar v-model="sendVal" type="danger" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Cancel"></dialog-bar>
 	</div>
 </template>
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped="">
 	@import '../common/fonts/font.css';
 	@import '../common/icon/iconfont.css';
 

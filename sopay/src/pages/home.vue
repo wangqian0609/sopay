@@ -1,6 +1,6 @@
 <template>
 	<div class="shopPage">
-		<home-nav></home-nav>
+		<nav-header :title="navTitle"></nav-header>
 		<div class="ShopBg">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
@@ -23,7 +23,7 @@
 		</dl>
 	</div>
 </template>
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped="">
 	@import '../common/fonts/font.css';
 
 	.shopPage{
@@ -96,22 +96,47 @@
 				width:33.3%;
 				height:1.57rem;
 				display:inline-block;
+				position:relative;
 				float:left;
 				color:transparent;
 				&:nth-child(1){
-					background:url("https://a.icons8.com/pidjqWdg/3WQMOG/men's.png") no-repeat;
+					background:url("https://a.icons8.com/ipohfYpQ/wsxPuQ/men's.png") no-repeat;
 					background-size:cover;
 					background-position:center;
+					&:after{
+						content:'Male';
+						width:100%;
+						height:.31rem;
+						position:absolute;
+						bottom:0;
+						left:0;
+					}
 				}
 				&:nth-child(2){
-					background:url("https://a.icons8.com/pidjqWdg/88Cwno/women's.png")  no-repeat;
+					background:url("https://a.icons8.com/ipohfYpQ/kwr4R0/women's.png")  no-repeat;
 					background-size:cover;
 					background-position:center;
+					&:after{
+						content:'Female';
+						width:100%;
+						height:.31rem;
+						position:absolute;
+						bottom:0;
+						left:0;
+					}
 				}
 				&:nth-child(3){
-					background:url("https://a.icons8.com/pidjqWdg/FeUV5K/kids's.png") no-repeat;
+					background:url("https://a.icons8.com/ipohfYpQ/ca24Lg/kids's.png") no-repeat;
 					background-size:cover;
 					background-position:center;
+					&:after{
+						content:'Kids';
+						width:100%;
+						height:.31rem;
+						position:absolute;
+						bottom:0;
+						left:0;
+					}
 				}
 			}
 		}
@@ -120,18 +145,19 @@
 	@import 'swiper/dist/css/swiper.css'
 </style>
 <script type="text/javascript">
-	import homeNav from '../components/Hheader'
+	import navHeader from '../components/Hheader'
 	import Swiper from 'swiper'
 
 	export	default{
 		data(){
 			return{
 				shopList:[{img:'https://a.icons8.com/pidjqWdg/XwTVZm/bitmap.png'},{img:'https://a.icons8.com/pidjqWdg/EdQAdi/bitmap.png'},{img:'https://a.icons8.com/pidjqWdg/O2GEmA/bitmap.png'}],
-				logger:this.$route.params.user
+				logger:this.$route.params.user,
+				navTitle:'SHOP'
 			}
 		},
 		components:{
-			'home-nav':homeNav
+			'nav-header':navHeader
 		},
 		mounted(){
 			var ShopSwiper = new Swiper('.swiper-container',{

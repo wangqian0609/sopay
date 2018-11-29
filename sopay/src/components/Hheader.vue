@@ -5,7 +5,7 @@
 				<i class="iconfont">&#xe67a;</i>
 			</div>
 			<div class="nav-label">
-				<label>SHOP</label>
+				<label>{{title}}</label>
 			</div>
 			<div class="nav-right">
 				<i class="iconfont">&#xe613;</i>
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 </template>
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped="">
 	@import '../common/fonts/font.css';
 	@import '../common/icon/iconfont.css';
 	
@@ -61,7 +61,7 @@
 			.nav-right{
 				width:10%;
 				display:inline-block;
-				left:right;
+				text-align:right;
 				float:right;
 				.iconfont{
 					font-size:.18rem;
@@ -125,6 +125,12 @@
 </style>
 <script type="text/javascript">
 	export default{
+		props:{
+			title:{
+				type:String,
+				default:''
+			}
+		},
 		data(){
 			return{
 				FuncList:[

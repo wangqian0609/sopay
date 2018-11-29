@@ -11,7 +11,7 @@
 		</div>
 	</div>
 </template>
-<style lang="scss" type="text/css">
+<style lang="scss" type="text/css" scoped="">
 	@import '../common/fonts/font.css';
 
 	.dialog{
