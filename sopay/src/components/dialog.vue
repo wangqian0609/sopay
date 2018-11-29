@@ -20,15 +20,15 @@
 		border-radius:.1rem;
 		background-color:#fff;
 		position:absolute;
-		top:50%;
-		left:50%;
-		margin-left:-.3rem;
-		margin-top:-.3rem;
+		top: 25%;
+	    left: 50%;
+	    margin-left: -1.5rem;
 		z-index:999;
 		.dialog-title{
 			width:100%;
 			line-height:.6rem;
 			display:inline-block;
+			text-align:center;
 			h3{
 				color:#333;
 				font-family:'Montserrat';
@@ -47,24 +47,25 @@
 		}
 		.dialog-btns{
 			width:100%;
-			display:table;
+			display:inline-block;
 			padding-top:.3rem;
+			text-align: center;
 			.cancle{
 				background-color:#eee;
 				color:#333;
 			}
 			.danger{
-				background-color:#dc1414;
+				background-color:#de0006;
 				color:#fff;
 			}
 			.confirm{
-				background-color:#eca60e;
-				color:#dc4e14;
+				background-color:#4BC2FF;
+				color:#fff;
 			}
 			input{
-				display: table-cell;
+				display: inline-block;
 			    height: .4rem;
-			    width: 49%;
+			    width: 48%;
 			    border: none;
 			    border-radius: .05rem;
 			    font-family:'Montserrat';
@@ -94,15 +95,15 @@
 			},
 			cancelText:{
 				type:String,
-				default:'取消'
+				default:'Cancel'
 			},
 			dangerText:{
 				type:String,
-				default:'删除'
+				default:'Danger'
 			},
 			confirmText:{
 				type:String,
-				default:'确认'
+				default:'Confirm'
 			}
 		},
 		data(){

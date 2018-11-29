@@ -19,7 +19,7 @@
 			<input class="btn_login" type="button" value="Get Start" @click="goLogin">
 			<i class="alink_regist" @click="goRegist">Not a Member? SIGN UP</i>
 		</form>
-		<dialog-bar v-model="sendVal" type="cancel" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Cancel"></dialog-bar>
+		<dialog-bar v-model="sendVal" type="danger" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Cancel"></dialog-bar>
 	</div>
 </template>
 <style type="text/css" lang="scss">
@@ -33,6 +33,7 @@
 		background: url('https://a.icons8.com/gbxLsbSR/hM3gFu/group_2_objects.png') no-repeat;
 		background-size: cover;
 		background-position: center center;
+		position: relative;
 		.logo{
 			width: 100%;
 			height: 2.3rem;
@@ -82,11 +83,11 @@
 			}
 			.btn_login{
 				width:100%;
-				height: .55rem;
-				line-height: .55rem;
+				height: .44rem;
+				line-height: .44rem;
 				background-color: #4BC2FF;
 				border: none;
-				border-radius: .3rem;
+				border-radius: .22rem;
 				display:inline-block;
 				text-align:center;
 				font-size: .17rem;
@@ -135,7 +136,7 @@
 				this.login.passwd = '';
 			},
 			clickDanger(){
-				console.log('这里是danger回调');
+				console.log('点击了提示');
 			},
 			clickConfirm(){
 				console.log('点击了确认');
@@ -147,7 +148,21 @@
 					this.openMask();
 				}
 				else{
-					this.$router.push({name:'Home',params:{user:this.login.name}});
+					this.$http.get('/api/users').then((data) =>{
+						const users = data.body.data;
+						let flat = false;
+						for(let i = 0;i < users.length; i++){
+							if(users[i].name == this.login.name && users[i].passwd ==this.login.passwd){
+								flat = true;
+								this.$router.push({name:'Home',params:{user:this.login.name}});
+							}
+						}
+						if(flat == false){
+							this.maskTitle = 'Erro';
+							this.maskContent = 'Incorrect account or password!';
+							this.openMask();
+						}
+					})
 				}
 			},
 			goRegist:function(){

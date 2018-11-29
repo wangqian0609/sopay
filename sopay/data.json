@@ -1,0 +1,36 @@
+{
+	"users":[
+		{
+			"id": "0", 
+			"name": "Tony", 
+			"passwd": "123456", 
+			"email": "123456@qq.com",
+			"gender": "male",
+			"birth": "1981-1-1"
+		 },  
+        {
+    		"id": "1",
+	        "name": "Gem", 
+	    	"passwd": "123456", 
+	    	"email": "123456@163.com",
+	    	"gender": "female",
+	    	"birth": "1983-12-21"
+	    },  
+        {
+        	"id": "2", 
+	        "name": "Tom", 
+	    	"passwd": "123456", 
+	    	"email": "123456@yoho.com",
+	    	"gender": "male",
+	    	"birth": "1991-5-4"
+	    },  
+        {
+        	"id": "3", 
+	        "name": "Kate", 
+	    	"passwd": "123456", 
+	    	"email": "123456@sina.com",
+	    	"gender": "female",
+	    	"birth": "2001-12-31"
+	    }  
+	]
+}
