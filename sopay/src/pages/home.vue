@@ -13,7 +13,7 @@
 			<div class="shopPart">
 				<h1>SALE</h1>
 				<h3>GET UP TO 60% OFF</h3>
-				<input type="button" value="Shop NoW" @click="goContent('shop')">
+				<input type="button" value="Shop NoW" @click="goContent('Shop')">
 			</div>
 		</div>
 		<dl class="ShopBtn">
@@ -23,7 +23,7 @@
 		</dl>
 	</div>
 </template>
-<style type="text/css" lang="scss" scoped="">
+<style type="text/css" lang="scss">
 	@import '../common/fonts/font.css';
 
 	.shopPage{
@@ -100,39 +100,60 @@
 				float:left;
 				color:transparent;
 				&:nth-child(1){
-					background:url("https://a.icons8.com/ipohfYpQ/wsxPuQ/men's.png") no-repeat;
+					background:url("../assset/men's.png") no-repeat;
 					background-size:cover;
 					background-position:center;
 					&:after{
 						content:'Male';
 						width:100%;
 						height:.31rem;
+						line-height:.31rem;
+						text-align:center;
+						display:inline-block;
+						background-color:rgba(231,85,90,.85);
+						font-family:'Montserrat';
+						font-size:.13rem;
+						color:#fff;
 						position:absolute;
 						bottom:0;
 						left:0;
 					}
 				}
 				&:nth-child(2){
-					background:url("https://a.icons8.com/ipohfYpQ/kwr4R0/women's.png")  no-repeat;
+					background:url("../assset/women's.png")  no-repeat;
 					background-size:cover;
 					background-position:center;
 					&:after{
 						content:'Female';
 						width:100%;
 						height:.31rem;
+						line-height:.31rem;
+						text-align:center;
+						display:inline-block;
+						background-color:rgba(59,214,248,.85);
+						font-family:'Montserrat';
+						font-size:.13rem;
+						color:#fff;
 						position:absolute;
 						bottom:0;
 						left:0;
 					}
 				}
 				&:nth-child(3){
-					background:url("https://a.icons8.com/ipohfYpQ/ca24Lg/kids's.png") no-repeat;
+					background:url("../assset/kids's.png") no-repeat;
 					background-size:cover;
 					background-position:center;
 					&:after{
 						content:'Kids';
 						width:100%;
 						height:.31rem;
+						line-height:.31rem;
+						text-align:center;
+						display:inline-block;
+						background-color:rgba(172,130,226,.85);
+						font-family:'Montserrat';
+						font-size:.13rem;
+						color:#fff;
 						position:absolute;
 						bottom:0;
 						left:0;
@@ -142,7 +163,7 @@
 		}
 	}
 
-	@import 'swiper/dist/css/swiper.css'
+	@import 'swiper/dist/css/swiper.min.css'
 </style>
 <script type="text/javascript">
 	import navHeader from '../components/Hheader'

@@ -23,13 +23,13 @@
 		</div>
 	</div>
 </template>
-<style type="text/css" lang="scss" scoped="">
+<style type="text/css" lang="scss">
 	@import '../common/fonts/font.css';
 	@import '../common/icon/iconfont.css';
 	
 	.navPart{
 		width:100%;
-		height:2.34rem;
+		// height:2.34rem;
 		position:absolute;
 		left:0;
 		top:0;
@@ -46,7 +46,7 @@
 				float:left;
 				.iconfont{
 					font-size:.18rem;
-					color:#fff;
+					color:#000;
 				}
 			}
 			.nav-label{
@@ -55,7 +55,7 @@
 				text-align:center;
 				label{
 					font-size:.15rem;
-					color:#fff;
+					color:#000;
 				}
 			}
 			.nav-right{
@@ -65,7 +65,7 @@
 				float:right;
 				.iconfont{
 					font-size:.18rem;
-					color:#fff;
+					color:#000;
 				}
 			}
 		}
@@ -115,12 +115,6 @@
 	}
 	.isActive{
 		background-color:#fff;
-		.nav-left .iconfont , .nav-right .iconfont{
-			color:#000 !important;
-		}
-		.nav-label label{
-			color:#000 !important;
-		}
 	}
 </style>
 <script type="text/javascript">

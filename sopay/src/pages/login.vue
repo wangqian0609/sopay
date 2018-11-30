@@ -30,7 +30,7 @@
 		width:100%;
 		height:100%;
 		padding:0 .2rem;
-		background: url('https://a.icons8.com/gbxLsbSR/hM3gFu/group_2_objects.png') no-repeat;
+		background: url('../assset/group_2_objects.png') no-repeat;
 		background-size: cover;
 		background-position: center center;
 		position: relative;

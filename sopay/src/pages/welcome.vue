@@ -16,7 +16,7 @@
 		</div>
 	</div>
 </template>
-<style type="text/css" lang="scss" scoped="">
+<style type="text/css" lang="scss">
 	@import '../common/fonts/font.css';
 
 	.welContent{
@@ -83,7 +83,7 @@
 		}
 	}
 
-	@import 'swiper/dist/css/swiper.css'
+	@import 'swiper/dist/css/swiper.min.css'
 </style>
 <script>
 	import Swiper from 'swiper'
