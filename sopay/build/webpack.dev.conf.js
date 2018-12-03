@@ -14,6 +14,7 @@ const portfinder = require('portfinder')
 const express = require('express')
 const app = express() //请求server
 var appData = require('../data.json') //加载本地数据文件
+var commodities = appData.commodities
 var users = appData.users
 var apiRoutes = express.Router() 
 app.use('/api',apiRoutes) //通过路由请求数据
@@ -57,6 +58,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           errno:0,
           data:users
+        })
+      }),
+      app.get('/api/commodities',(req,res) =>{
+        res.json({
+          errno:0,
+          data:commodities
         })
       })
     },

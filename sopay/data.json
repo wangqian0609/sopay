@@ -32,5 +32,103 @@
 	    	"gender": "female",
 	    	"birth": "2001-12-31"
 	    }  
-	]
+	],
+	"commodities": [
+        {
+            "type": "Shop",
+            "ad": "https://a.icons8.com/XuiWqhZt/s7Nq5s/mask---bitmap.png",
+            "content": [
+                {
+                    "name": "Female",
+                    "img": "https://a.icons8.com/XuiWqhZt/CyYjwA/bitmap.png"
+                },
+                {
+                    "name": "Male",
+                    "img": "https://a.icons8.com/XuiWqhZt/M2LF4Y/bitmap.png"
+                },
+                {
+                    "name": "Kids",
+                    "img": "https://a.icons8.com/XuiWqhZt/SVYdz9/bitmap.png"
+                }
+            ]
+        },
+        {
+            "type": "Male",
+            "ad": "https://a.icons8.com/XuiWqhZt/l42Vz5/mask---bitmap.png",
+            "content": [
+                {
+                    "name": "Clothes",
+                    "img": "https://a.icons8.com/XuiWqhZt/cLAeip/bitmap.png"
+                },
+                {
+                    "name": "Shoes",
+                    "img": "https://a.icons8.com/XuiWqhZt/33d8qF/bitmap-symbol-instance.png"
+                },
+                {
+                    "name": "Pants",
+                    "img": "https://a.icons8.com/XuiWqhZt/tjZrOq/bitmap.png"
+                },
+                {
+                    "name": "Ornaments",
+                    "img": "https://a.icons8.com/XuiWqhZt/i6497y/bitmap.png"
+                },
+                {
+                    "name": "Others",
+                    "img": ""
+                }
+            ]
+        },
+        {
+            "type": "Female",
+            "ad": "https://a.icons8.com/XuiWqhZt/nVdDJn/group_2_objects.png",
+            "content": [
+                {
+                    "name": "Clothes",
+                    "img": "https://a.icons8.com/XuiWqhZt/l8i4Tm/bitmap.png"
+                },
+                {
+                    "name": "Shoes",
+                    "img": "https://a.icons8.com/XuiWqhZt/A6Dso0/bitmap.png"
+                },
+                {
+                    "name": "Pants",
+                    "img": "https://a.icons8.com/XuiWqhZt/tjZrOq/bitmap.png"
+                },
+                {
+                    "name": "Ornaments",
+                    "img": "https://a.icons8.com/XuiWqhZt/Q1fybC/bitmap.png"
+                },
+                {
+                    "name": "Others",
+                    "img": ""
+                }
+            ]
+        },
+        {
+            "type": "Kids",
+            "ad": "",
+            "content": [
+                {
+                    "name": "Clothes",
+                    "img": "https://a.icons8.com/XuiWqhZt/l8i4Tm/bitmap.png"
+                },
+                {
+                    "name": "Shoes",
+                    "img": "https://a.icons8.com/XuiWqhZt/l8i4Tm/bitmap.png"
+                },
+                {
+                    "name": "Pants",
+                    "img": "https://a.icons8.com/XuiWqhZt/tjZrOq/bitmap.png"
+                },
+                {
+                    "name": "Ornaments",
+                    "img": "https://a.icons8.com/XuiWqhZt/Q1fybC/bitmap.png"
+                },
+                {
+                    "name": "Others",
+                    "img": ""
+                }
+            ]
+        }
+    ]
 }
