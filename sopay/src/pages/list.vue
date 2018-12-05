@@ -9,7 +9,7 @@
 				</div>
 			</div>
 			<ul class="listUl">
-				<li v-for="item in lists">
+				<li v-for="item in lists" @click="goList(item.name)">
 					<label>{{item.name}}</label>
 					<div class="item-right">
 						<img :src="item.img">
@@ -103,6 +103,7 @@
 		data(){
 			return{
 				navTitle:this.$route.params.type,
+				logger:this.$route.params.user,
 				salesImg:'',
 				lists:[]
 			}
@@ -122,6 +123,11 @@
 					}
 				} 
 			})
+		},
+		methods:{
+			goList:function(targeta){
+				this.$router.push({name:'goodList',params:{type:this.navTitle,name:targeta,user:this.logger}})
+			}
 		}
 	}
 </script>

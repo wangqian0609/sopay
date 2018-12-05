@@ -13,7 +13,7 @@
 			<div class="shopPart">
 				<h1>SALE</h1>
 				<h3>GET UP TO 60% OFF</h3>
-				<input type="button" value="Shop NoW" @click="goContent('Shop')">
+				<input type="button" value="Shop Now" @click="goContent('Shop')">
 			</div>
 		</div>
 		<dl class="ShopBtn">

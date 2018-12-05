@@ -16,6 +16,7 @@ const app = express() //请求server
 var appData = require('../data.json') //加载本地数据文件
 var commodities = appData.commodities
 var users = appData.users
+var goods = appData.goods
 var apiRoutes = express.Router() 
 app.use('/api',apiRoutes) //通过路由请求数据
 
@@ -64,6 +65,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           errno:0,
           data:commodities
+        })
+      }),
+      app.get('/api/goods',(req,res) =>{
+        res.json({
+          errno:0,
+          data:goods
         })
       })
     },

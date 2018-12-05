@@ -1,134 +1,184 @@
 {
-	"users":[
-		{
-			"id": "0", 
-			"name": "Tony", 
-			"passwd": "123456", 
-			"email": "123456@qq.com",
-			"gender": "male",
-			"birth": "1981-1-1"
-		 },  
+    "users": [
         {
-    		"id": "1",
-	        "name": "Gem", 
-	    	"passwd": "123456", 
-	    	"email": "123456@163.com",
-	    	"gender": "female",
-	    	"birth": "1983-12-21"
-	    },  
+            "id": "0", 
+            "name": "Tony", 
+            "passwd": "123456", 
+            "email": "123456@qq.com", 
+            "gender": "male", 
+            "birth": "1981-1-1"
+        }, 
         {
-        	"id": "2", 
-	        "name": "Tom", 
-	    	"passwd": "123456", 
-	    	"email": "123456@yoho.com",
-	    	"gender": "male",
-	    	"birth": "1991-5-4"
-	    },  
+            "id": "1", 
+            "name": "Gem", 
+            "passwd": "123456", 
+            "email": "123456@163.com", 
+            "gender": "female", 
+            "birth": "1983-12-21"
+        }, 
         {
-        	"id": "3", 
-	        "name": "Kate", 
-	    	"passwd": "123456", 
-	    	"email": "123456@sina.com",
-	    	"gender": "female",
-	    	"birth": "2001-12-31"
-	    }  
-	],
-	"commodities": [
+            "id": "2", 
+            "name": "Tom", 
+            "passwd": "123456", 
+            "email": "123456@yoho.com", 
+            "gender": "male", 
+            "birth": "1991-5-4"
+        }, 
         {
-            "type": "Shop",
-            "ad": "https://a.icons8.com/mYeXnhUP/ETtvuG/bitmap.png",
+            "id": "3", 
+            "name": "Kate", 
+            "passwd": "123456", 
+            "email": "123456@sina.com", 
+            "gender": "female", 
+            "birth": "2001-12-31"
+        }
+    ], 
+    "commodities": [
+        {
+            "type": "Shop", 
+            "ad": "https://a.icons8.com/mYeXnhUP/ETtvuG/bitmap.png", 
             "content": [
                 {
-                    "name": "Female",
+                    "name": "Female", 
                     "img": "https://a.icons8.com/mYeXnhUP/DFeUth/image.png"
-                },
+                }, 
                 {
-                    "name": "Male",
+                    "name": "Male", 
                     "img": "https://a.icons8.com/mYeXnhUP/M9zV5I/image.png"
-                },
+                }, 
                 {
-                    "name": "Kids",
+                    "name": "Kids", 
                     "img": "https://a.icons8.com/mYeXnhUP/BI71V0/image.png"
                 }
             ]
-        },
+        }, 
         {
-            "type": "Male",
-            "ad": "https://a.icons8.com/mYeXnhUP/Zq6f6H/bitmap.png",
+            "type": "Male", 
+            "ad": "https://a.icons8.com/pobZZrRj/qUgsSo/image.png", 
             "content": [
                 {
-                    "name": "Clothes",
+                    "name": "Clothes", 
                     "img": "https://a.icons8.com/mYeXnhUP/tYqNJx/image.png"
-                },
+                }, 
                 {
-                    "name": "Shoes",
+                    "name": "Shoes", 
                     "img": "https://a.icons8.com/mYeXnhUP/I4lsPP/image.png"
-                },
+                }, 
                 {
-                    "name": "Pants",
+                    "name": "Pants", 
                     "img": "https://a.icons8.com/mYeXnhUP/UYfaua/image.png"
-                },
+                }, 
                 {
-                    "name": "Ornaments",
+                    "name": "Ornaments", 
                     "img": "https://a.icons8.com/mYeXnhUP/KNC8a3/image.png"
-                },
+                }, 
                 {
-                    "name": "Others",
+                    "name": "Others", 
                     "img": ""
                 }
             ]
-        },
+        }, 
         {
-            "type": "Female",
-            "ad": "https://a.icons8.com/mYeXnhUP/hvgm2p/bitmap.png",
+            "type": "Female", 
+            "ad": "https://a.icons8.com/pobZZrRj/PPHkAn/image.png", 
             "content": [
                 {
-                    "name": "Clothes",
+                    "name": "Clothes", 
                     "img": "https://a.icons8.com/mYeXnhUP/JQgyfo/image.png"
-                },
+                }, 
                 {
-                    "name": "Shoes",
+                    "name": "Shoes", 
                     "img": "https://a.icons8.com/mYeXnhUP/Bi3ieF/image.png"
-                },
+                }, 
                 {
-                    "name": "Pants",
+                    "name": "Pants", 
                     "img": "https://a.icons8.com/mYeXnhUP/6cg3mQ/image.png"
-                },
+                }, 
                 {
-                    "name": "Ornaments",
+                    "name": "Ornaments", 
                     "img": "https://a.icons8.com/mYeXnhUP/ahzTiE/image.png"
-                },
+                }, 
                 {
-                    "name": "Others",
+                    "name": "Others", 
                     "img": ""
                 }
             ]
-        },
+        }, 
         {
-            "type": "Kids",
-            "ad": "",
+            "type": "Kids", 
+            "ad": "https://a.icons8.com/pobZZrRj/4jd3pb/image.png", 
             "content": [
                 {
-                    "name": "Clothes",
-                    "img": "https://a.icons8.com/XuiWqhZt/l8i4Tm/bitmap.png"
-                },
+                    "name": "Clothes", 
+                    "img": "https://a.icons8.com/pobZZrRj/sDA1Mr/image.png"
+                }, 
                 {
-                    "name": "Shoes",
-                    "img": "https://a.icons8.com/XuiWqhZt/l8i4Tm/bitmap.png"
-                },
+                    "name": "Shoes", 
+                    "img": "https://a.icons8.com/pobZZrRj/WHLLxJ/image.png"
+                }, 
                 {
-                    "name": "Pants",
-                    "img": "https://a.icons8.com/XuiWqhZt/tjZrOq/bitmap.png"
-                },
+                    "name": "Pants", 
+                    "img": "https://a.icons8.com/pobZZrRj/QcAC8N/image.png"
+                }, 
                 {
-                    "name": "Ornaments",
-                    "img": "https://a.icons8.com/XuiWqhZt/Q1fybC/bitmap.png"
-                },
+                    "name": "Ornaments", 
+                    "img": "https://a.icons8.com/pobZZrRj/kRbCIu/image.png"
+                }, 
                 {
-                    "name": "Others",
+                    "name": "Others", 
                     "img": ""
                 }
             ]
+        }
+    ], 
+    "goods": [
+        {
+            "title": "PEACECAKE T-SHIRT",
+            "name": "Clothes", 
+            "describe": "Acne Studios’ Oscar jacket is a sleek, minimal take on a classic biker design.", 
+            "type": "Male", 
+            "discount": "$450.99", 
+            "price": "$326.00", 
+            "img": "https://a.icons8.com/pobZZrRj/AqOgMa/bg.png", 
+            "color": [
+                "#2C334E", 
+                "#4D4D4D", 
+                "#2B2C2E", 
+                "#493D37", 
+                "#917052"
+            ], 
+            "size": [
+                "XS", 
+                "S", 
+                "M", 
+                "L", 
+                "XL"
+            ], 
+            "detail": "1111111111"
+        }, 
+        {
+            "title": "WOOL- BLEND DUFFLE COAT",
+            "name": "Clothes", 
+            "describe": "Acne Studios’ Oscar jacket is a sleek, minimal take on a classic biker design.", 
+            "type": "Female", 
+            "discount": "$450.99", 
+            "price": "$326.00", 
+            "img": "https://a.icons8.com/pobZZrRj/UWkp16/bitmap.png", 
+            "color": [
+                "#C81C30", 
+                "#B5C8D5", 
+                "#48464C", 
+                "#6A6476", 
+                "#D5C7BD"
+            ], 
+            "size": [
+                "XS", 
+                "S", 
+                "M", 
+                "L", 
+                "XL"
+            ], 
+            "detail": "222222222"
         }
     ]
 }

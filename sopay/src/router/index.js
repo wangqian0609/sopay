@@ -32,6 +32,11 @@ export default new Router({
         component: resolve => require(['@/pages/list'],resolve),
     },
     {
+        path: '/goodList/:type/:name/:user',
+        name: 'goodList',
+        component: resolve => require(['@/pages/glists'],resolve),
+    },
+    {
         path: '/Collect/:user',
         name: 'Collect',
         component: resolve => require(['@/pages/collect'],resolve),
