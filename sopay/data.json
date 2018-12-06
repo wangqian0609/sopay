@@ -6,7 +6,15 @@
             "passwd": "123456", 
             "email": "123456@qq.com", 
             "gender": "male", 
-            "birth": "1981-1-1"
+            "birth": "1981-1-1",
+            "cart": [
+                {
+                    "title":"PEACECAKE T-SHIRT",
+                    "price":"$326.00",
+                    "color":"#2B2C2E",
+                    "size":"XS"
+                }
+            ]
         }, 
         {
             "id": "1", 
@@ -14,7 +22,8 @@
             "passwd": "123456", 
             "email": "123456@163.com", 
             "gender": "female", 
-            "birth": "1983-12-21"
+            "birth": "1983-12-21",
+            "cart":[]
         }, 
         {
             "id": "2", 
@@ -22,7 +31,21 @@
             "passwd": "123456", 
             "email": "123456@yoho.com", 
             "gender": "male", 
-            "birth": "1991-5-4"
+            "birth": "1991-5-4",
+            "cart":[
+                {
+                    "title":"PEACECAKE T-SHIRT",
+                    "price":"$326.00",
+                    "color":"#2B2C2E",
+                    "size":"XXL"
+                },
+                {
+                    "title":"WOOL- BLEND DUFFLE COAT",
+                    "price":"$326.00",
+                    "color":"#D5C7BD",
+                    "size":"M"
+                }
+            ]
         }, 
         {
             "id": "3", 
@@ -30,7 +53,8 @@
             "passwd": "123456", 
             "email": "123456@sina.com", 
             "gender": "female", 
-            "birth": "2001-12-31"
+            "birth": "2001-12-31",
+            "cart":[]
         }
     ], 
     "commodities": [
@@ -62,7 +86,7 @@
                 }, 
                 {
                     "name": "Shoes", 
-                    "img": "https://a.icons8.com/mYeXnhUP/I4lsPP/image.png"
+                    "img": "https://a.icons8.com/bqjeoZSk/7UPNcv/image.png"
                 }, 
                 {
                     "name": "Pants", 
@@ -139,7 +163,9 @@
             "type": "Male", 
             "discount": "$450.99", 
             "price": "$326.00", 
-            "img": "https://a.icons8.com/pobZZrRj/AqOgMa/bg.png", 
+            "img": [
+                "https://a.icons8.com/pobZZrRj/AqOgMa/bg.png"
+            ], 
             "color": [
                 "#2C334E", 
                 "#4D4D4D", 
@@ -163,7 +189,9 @@
             "type": "Female", 
             "discount": "$450.99", 
             "price": "$326.00", 
-            "img": "https://a.icons8.com/pobZZrRj/UWkp16/bitmap.png", 
+            "img": [
+                "https://a.icons8.com/pobZZrRj/UWkp16/bitmap.png"
+            ], 
             "color": [
                 "#C81C30", 
                 "#B5C8D5", 

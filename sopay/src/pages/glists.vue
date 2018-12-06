@@ -9,9 +9,9 @@
 			</div>
 			<div class="goodslist">
 				<ul class="goodsUl">
-					<li v-for="item in list">
+					<li v-for="item in list" @click="goDetails(item.title)">
 						<div class="goodsImg">
-							<img :src="item.img">
+							<img :src="item.img[0]">
 						</div>
 						<div class="goodsInfo">
 							<h3>{{item.title}}</h3>
@@ -115,6 +115,11 @@
 		},
 		components:{
 			'nav-header':navHeader
+		},
+		methods:{
+			goDetails:function(target){
+				this.$router.push({name:'goodsDetail',params:{title:target,user:this.logger}})
+			}
 		},
 		mounted(){
 			this.$http.get('/api/goods').then((data) =>{

@@ -131,7 +131,7 @@
 					{name:'SHOP',icon:"icon-shoppingcar",function:'Home'},
 					{name:'OFFERS',icon:"icon-star",function:'Collect'},
 					{name:'ORDERS',icon:"icon-label",function:'Order'},
-					{name:'HISTORY',icon:"icon-lock",function:'History'},
+					{name:'CART',icon:"icon-shopping",function:'Cart'},
 					{name:'ACCOUNT',icon:"icon-user",function:'Account'},
 					{name:'SETTINGS',icon:"icon-setting",function:'Setting'}
 				],

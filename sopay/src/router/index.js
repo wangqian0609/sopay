@@ -37,6 +37,11 @@ export default new Router({
         component: resolve => require(['@/pages/glists'],resolve),
     },
     {
+        path: '/goodsDetail/:title/:name',
+        name: 'goodsDetail',
+        component: resolve => require(['@/pages/goodsDetails'],resolve),
+    },
+    {
         path: '/Collect/:user',
         name: 'Collect',
         component: resolve => require(['@/pages/collect'],resolve),
@@ -47,9 +52,9 @@ export default new Router({
         component: resolve => require(['@/pages/order'],resolve),
     },
     {
-        path: '/History/:user',
-        name: 'History',
-        component: resolve => require(['@/pages/history'],resolve),
+        path: '/Cart/:user',
+        name: 'Cart',
+        component: resolve => require(['@/pages/cart'],resolve),
     },
     {
         path: '/Account/:user',
