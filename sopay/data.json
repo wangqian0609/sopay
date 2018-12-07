@@ -10,9 +10,11 @@
             "cart": [
                 {
                     "title":"PEACECAKE T-SHIRT",
-                    "price":"$326.00",
+                    "price":326.00,
                     "color":"#2B2C2E",
-                    "size":"XS"
+                    "size":"XS",
+                    "img":"https://a.icons8.com/pobZZrRj/AqOgMa/bg.png",
+                    "num":1
                 }
             ]
         }, 
@@ -35,15 +37,19 @@
             "cart":[
                 {
                     "title":"PEACECAKE T-SHIRT",
-                    "price":"$326.00",
+                    "price":326.00,
                     "color":"#2B2C2E",
-                    "size":"XXL"
+                    "size":"XXL",
+                    "img": "https://a.icons8.com/pobZZrRj/AqOgMa/bg.png",
+                    "num":1
                 },
                 {
                     "title":"WOOL- BLEND DUFFLE COAT",
-                    "price":"$326.00",
+                    "price":326.00,
                     "color":"#D5C7BD",
-                    "size":"M"
+                    "size":"M",
+                    "img":"https://a.icons8.com/pobZZrRj/UWkp16/bitmap.png",
+                    "num":1
                 }
             ]
         }, 
@@ -161,8 +167,8 @@
             "name": "Clothes", 
             "describe": "Acne Studios’ Oscar jacket is a sleek, minimal take on a classic biker design.", 
             "type": "Male", 
-            "discount": "$450.99", 
-            "price": "$326.00", 
+            "discount": 450.99, 
+            "price": 326.00, 
             "img": [
                 "https://a.icons8.com/pobZZrRj/AqOgMa/bg.png"
             ], 
@@ -187,8 +193,8 @@
             "name": "Clothes", 
             "describe": "Acne Studios’ Oscar jacket is a sleek, minimal take on a classic biker design.", 
             "type": "Female", 
-            "discount": "$450.99", 
-            "price": "$326.00", 
+            "discount": 450.99, 
+            "price": 326.00, 
             "img": [
                 "https://a.icons8.com/pobZZrRj/UWkp16/bitmap.png"
             ], 

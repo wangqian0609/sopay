@@ -20,6 +20,15 @@
 			<ul class="goodColor">
 				<li v-for="(value,index) in goods.color" v-bind:style="{backgroundColor:value}" @click="selectColor(index)" v-bind:class="{active:index == currColor}"></li>
 			</ul>
+			<div class="goodNum">
+				<label>数量</label>
+				<dl class="numBox">
+					<dd @click="addBtn">+</dd>
+					<dd>{{selectGoods.num}}</dd>
+					<dd @click="subBtn">-</dd>
+				</dl>
+			</div>
+			<div class="clear"></div>
 		</div>
 		<div class="goodsFooter">
 			<div class="left">
@@ -31,8 +40,8 @@
 				<i v-show="isShow" class="iconfont down">&#xe64f;</i>
 			</div>
 			<div class="right">
-				<i>{{goods.discount}}</i>
-				<label>{{goods.price}}</label>
+				<i>${{goods.discount}}</i>
+				<label>${{goods.price}}</label>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -45,6 +54,7 @@
 	.goodsContent{
 		width:100%;
 		height:100%;
+		display:relative;
 		.clear{
 			clear:both;
 			height:0;
@@ -63,7 +73,7 @@
 			left:0;
 			bottom:.68rem;
 			z-index:2;
-			h2{
+			& > h2{
 				width:100%;
 				padding:.1rem .2rem;
 				display: inline-block;
@@ -72,7 +82,7 @@
 				color:#1a1a1a;
 				text-align: center;
 			}
-			label{
+			& > label{
 				width:100%;
 				padding:0 .2rem .1rem;
 				display: inline-block;
@@ -122,6 +132,43 @@
 					top:50%;
 				}
 			}
+			.goodNum{
+				width:100%;
+				padding:.05rem .2rem;
+				display:inline-block;
+				label{
+					width:40%;
+					display:inline-block;
+					text-align: left;
+					line-height:.35rem;
+					font-family:'Montserrat';
+					font-size:.17rem;
+					color:#1a1a1a;
+				}
+				.numBox{
+					min-width:45%;
+					display:table;
+					text-align: center;
+					float:right;
+					border:1px solid #D8D8D8;
+					dd{
+						display:table-cell;
+						line-height:.35rem;
+						font-family:'Montserrat';
+						font-size:.17rem;
+						color:#D8D8D8;
+						border-right: 1px solid #D8D8D8;
+						&:nth-child(2){
+							font-family:'Montserrat';
+							font-size:.13rem;
+							color:#3A3B3D;
+						}
+						&:last-child{
+							border-right:none;
+						}
+					}
+				}
+			}
 		}
 		.goodsFooter{
 			width:100%;
@@ -132,7 +179,7 @@
 			position:absolute;
 			left:0;
 			bottom:0;
-			z-index:2;
+			z-index:20;
 			.left{
 				width:33%;
 				display:inline-block;
@@ -197,6 +244,7 @@
 					line-height:.17rem;
 					display:block;
 					font-size:.11rem;
+					font-style:normal;
 					color:#a1a1a1;
 				}
 				label{
@@ -233,7 +281,9 @@
 					'title':'',
 					'price':'',
 					'color':'',
-					'size':''
+					'size':'',
+					'img':'',
+					'num':1
 				}
 			}
 		},
@@ -265,6 +315,15 @@
 			})
 		},
 		methods:{
+			subBtn:function(){
+				this.selectGoods.num --;
+				if(this.selectGoods.num < 1){
+					this.selectGoods.num = 1;
+				}
+			},
+			addBtn:function(){
+				this.selectGoods.num ++;
+			},
 			showDetails:function(){
 				this.isShow = !this.isShow;
 			},
@@ -290,7 +349,8 @@
 				this.selectGoods.title = this.navTitle,
 				this.selectGoods.price=this.goods.price,
 				this.selectGoods.color=this.goods.color[this.currColor],
-				this.selectGoods.size=this.goods.size[this.currSize]
+				this.selectGoods.size=this.goods.size[this.currSize],
+				this.selectGoods.img = this.goods.img[0];
 				console.log(this.selectGoods);
 			},
 			addCart:function(){

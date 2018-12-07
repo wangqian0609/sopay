@@ -7,7 +7,7 @@
 					<label>I am very sorry that there is no relevant product at present</label>
 				</div>
 			</div>
-			<div class="goodslist">
+			<div class="goodslist" v-show="!showNull">
 				<ul class="goodsUl">
 					<li v-for="item in list" @click="goDetails(item.title)">
 						<div class="goodsImg">
@@ -15,7 +15,7 @@
 						</div>
 						<div class="goodsInfo">
 							<h3>{{item.title}}</h3>
-							<label>{{item.price}}</label>
+							<label>${{item.price}}</label>
 						</div>
 					</li>
 				</ul>
@@ -29,6 +29,7 @@
 	.GoodList{
 		width:100%;
 		height:100%;
+		position:relative;
 		.GoodConetnt{
 			width:100%;
 			background-color:#f8f8f8;

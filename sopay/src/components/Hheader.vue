@@ -33,7 +33,7 @@
 		position:absolute;
 		left:0;
 		top:0;
-		z-index:2;
+		z-index:20;
 		.nav{
 			width:100%;
 			height:.44rem;
@@ -73,6 +73,7 @@
 			width:100%;
 			padding:0 .2rem;
 			border-top:1px solid #A1A2A5;
+			border-bottom:1px solid #A1A2A5;
 			dl{
 				width:100%;
 				display:inline-block;
