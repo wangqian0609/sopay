@@ -73,7 +73,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           data:goods
         })
       })
-    },
+    }
   },
   plugins: [
     new webpack.DefinePlugin({

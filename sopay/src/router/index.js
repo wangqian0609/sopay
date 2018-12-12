@@ -47,7 +47,7 @@ export default new Router({
         component: resolve => require(['@/pages/collect'],resolve),
     },
     {
-        path: '/Order/:user',
+        path: '/Order/:status/:user',
         name: 'Order',
         component: resolve => require(['@/pages/order'],resolve),
     },

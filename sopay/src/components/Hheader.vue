@@ -8,7 +8,7 @@
 				<label>{{title}}</label>
 			</div>
 			<div class="nav-right">
-				<i class="iconfont">&#xe613;</i>
+				<!-- <i class="iconfont">&#xe613;</i> -->
 			</div>
 			<div class="clear"></div>
 		</nav>
@@ -146,7 +146,12 @@
 			},
 			go:function(target){
 				console.log(this.logger);
-				this.$router.push({name:target,params:{user:this.logger}})
+				if(target == "Order"){
+					this.$router.push({name:target,params:{status:'all',user:this.logger}});
+				}
+				else{
+					this.$router.push({name:target,params:{user:this.logger}});
+				}
 			}
 		}
 	}
