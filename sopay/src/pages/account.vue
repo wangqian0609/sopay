@@ -173,16 +173,16 @@
 	import echarts from 'echarts'
 
 	export default{
-		props:{
-			xValue:{
-				type:Object,
-				default:''
-			},
-			yValue:{
-				type:Object,
-				default:''
-			}
-		},
+		// props:{
+		// 	xValue:{
+		// 		type:Array,
+		// 		default:''
+		// 	},
+		// 	yValue:{
+		// 		type:Array,
+		// 		default:''
+		// 	}
+		// },
 		data(){
 			return{
 				navTitle:'Account',
@@ -196,17 +196,22 @@
 					xAxis: {
 				        type: 'category',
 				        boundaryGap: false,
-				        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-				        // data:xValue
+				        // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+				        data:[]
 				    },
 				    yAxis: {
 				        type: 'value'
 				    },
 				    series: [{
-				        data: [820, 932, 901, 934, 1290, 1330, 1320],
-				        // data:yValue,
+				        // data: [820, 932, 901, 934, 1290, 1330, 1320],
+				        data:[],
 				        type: 'line',
-				        areaStyle: {}
+				        areaStyle: {},
+				        itemStyle: {
+			                normal: {
+			                    color: '#3599DE'//修改区域颜色
+			                }
+			            },
 				    }]
 				}
 
@@ -234,17 +239,16 @@
 				// console.log(this.loggerOrder);
 				if(this.loggerOrder.length != 0){
 					for(let j = 0 ; j < this.loggerOrder.length; j++){
-						this.xValue.push(this.loggerOrder[j].time);
+						this.option.xAxis.data.push(this.loggerOrder[j].time);
 						// this.yData.time = this.loggerOrder[j].time;
 						// this.yData.total = this.loggerOrder[j].total;
 						// this.yValue.push(this.yData);
-						this.yValue.push(this.loggerOrder[j].total);
+						this.option.series[0].data.push(this.loggerOrder[j].total);
 					}
 				}
-			});
-			this.$nextTick(function(){
+				console.log(this.option);
 				this.drawPie('wallet');
-			})
+			});
 		},
 		methods:{
 			goOrder:function(target){
