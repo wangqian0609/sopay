@@ -173,16 +173,6 @@
 	import echarts from 'echarts'
 
 	export default{
-		// props:{
-		// 	xValue:{
-		// 		type:Array,
-		// 		default:''
-		// 	},
-		// 	yValue:{
-		// 		type:Array,
-		// 		default:''
-		// 	}
-		// },
 		data(){
 			return{
 				navTitle:'Account',
@@ -236,13 +226,9 @@
 				if(this.moods == ''){
 					this.moods = 'Please input your mood';
 				}
-				// console.log(this.loggerOrder);
 				if(this.loggerOrder.length != 0){
 					for(let j = 0 ; j < this.loggerOrder.length; j++){
 						this.option.xAxis.data.push(this.loggerOrder[j].time);
-						// this.yData.time = this.loggerOrder[j].time;
-						// this.yData.total = this.loggerOrder[j].total;
-						// this.yValue.push(this.yData);
 						this.option.series[0].data.push(this.loggerOrder[j].total);
 					}
 				}

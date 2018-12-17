@@ -10,6 +10,7 @@
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
+			<div class="goodsCollect" :class="{GotBlue:isCollect}" @click="isCollect = !isCollect"></div>
 		</div>
 		<div class="goodsInfo" v-show="isShow">
 			<h2>{{goods.title}}</h2>
@@ -65,6 +66,24 @@
 			position:absolute;
 			top:.44rem;
 			bottom:.68rem;
+		}
+		.goodsCollect{
+			font-family:"iconfont" !important;
+			font-size:.3rem;
+			color:#666;
+			font-style:normal;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			position:fixed;
+			right:.2rem;
+			top:.5rem;
+			z-index:2;
+			&:before{
+				content: "\e659";
+			}
+		}
+		.GotBlue{
+			color:#6077E7;
 		}
 		.goodsInfo{
 			width:100%;
@@ -271,6 +290,7 @@
 				navTitle:this.$route.params.title,
 				logger:this.$route.params.user,
 				isShow:false,
+				isCollect:false,
 				currSize:0,
 				currColor:0,
 				goods:'',
@@ -356,8 +376,8 @@
 			addCart:function(){
 				this.maskTitle = 'Tip';
 				this.maskContent = 'The item you selected has been successfully added to the cart';
-				this.openMask();
-			}
+				this.openMask('a');
+			},
 		}
 	}
 
