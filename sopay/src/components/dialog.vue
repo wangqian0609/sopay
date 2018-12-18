@@ -38,9 +38,12 @@
 			width:100%;
 			line-height:.45rem;
 			display:inline-block;
-			text-align:left;
+			text-align: left;
 			label{
 				width:100%;
+				color:#333;
+				font-size:.17rem;
+				font-family:'Montserrat';
 				display:inline-block;
 				word-break:break-all;
 			}

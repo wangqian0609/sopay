@@ -379,6 +379,8 @@
 			orderGoods:function(){
 				this.orderinfo.good = this.cartList;
 				console.log(this.orderinfo);
+				this.$router.push({name:'comfirm',params:{goods:this.orderinfo,user:this.logger}})
+				// debugger;
 				this.cartList = [];
 				this.goodShow = true;
 			}

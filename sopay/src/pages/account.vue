@@ -32,6 +32,8 @@
 	</div>
 </template>
 <style type="text/css" lang="scss">
+	@import '../common/fonts/font.css';
+	
 	.accountContent{
 		width:100%;
 		height:100%;

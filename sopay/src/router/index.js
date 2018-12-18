@@ -37,9 +37,14 @@ export default new Router({
         component: resolve => require(['@/pages/glists'],resolve),
     },
     {
-        path: '/goodsDetail/:title/:name',
+        path: '/goodsDetail/:title/:user',
         name: 'goodsDetail',
         component: resolve => require(['@/pages/goodsDetails'],resolve),
+    },
+    {
+        path: '/comfirm/:goods/:user',
+        name: 'comfirm',
+        component: resolve => require(['@/pages/comfirm'],resolve),
     },
     {
         path: '/Collect/:user',
@@ -66,6 +71,10 @@ export default new Router({
         name: 'Setting',
         component: resolve => require(['@/pages/setting'],resolve),
     },
-
+    {
+        path:'/EditAddress/:user',
+        name:'EditAddress',
+        component: resolve => require(['@/pages/editaddress'],resolve),
+    }
   ]
 })

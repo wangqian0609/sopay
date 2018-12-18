@@ -17,6 +17,7 @@
 	</div>
 </template>
 <style lang="scss" type="text/css">
+	@import '../common/fonts/font.css';
 	.orderContent{
 		width:100%;
 		height:100%;
