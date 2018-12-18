@@ -3,7 +3,7 @@
 		<nav-header :title="navTitle"></nav-header>
 		<div class="setConetnt">
 			<ul>
-				<li v-for="item in sets">
+				<li v-for="item in sets" @click="goAlink(item.link)">
 					<label>{{item.name}}</label>
 				</li>
 			</ul>
@@ -92,11 +92,11 @@
 				sets:[
 					{
 						'name':'UserInformation',
-						'link':'EditAddress',
+						'link':'EditUserInfo',
 					},
 					{
 						'name':'AddressManage',
-						'link':'',
+						'link':'EditAddress',
 					},
 					{
 						'name':'UserAgreement',

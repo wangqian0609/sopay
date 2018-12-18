@@ -75,6 +75,11 @@ export default new Router({
         path:'/EditAddress/:user',
         name:'EditAddress',
         component: resolve => require(['@/pages/editaddress'],resolve),
+    },
+    {
+        path:'/EditUserInfo/:user',
+        name:'EditUserInfo',
+        component: resolve => require(['@/pages/editUser'],resolve),
     }
   ]
 })

@@ -10,6 +10,8 @@
 	</div>
 </template>
 <style type="text/css" lang="scss">
+	@import '../common/fonts/font.css';
+	
 	.console{
 		width:3rem;
 		padding:.3rem .15rem;
