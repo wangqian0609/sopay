@@ -27,7 +27,7 @@
 						<div class="icon">
 							<div class="iconfont">&#xe639;</div>
 						</div>
-						<input type="text" v-model="info.birth">
+						<input id="birthdate" type="text" v-model="info.birth">
 					</li>
 					<li>
 						<div class="icon">
@@ -46,6 +46,7 @@
 				<input type="button" value="Change">
 			</div>
 		</div>
+		<date-pop :el = "popId"></date-pop>
 	</div>
 </template>
 <style type="text/css" lang="scss">
@@ -153,6 +154,7 @@
 </style>
 <script type="text/javascript">
 	import navHeader from '../components/Hheader'
+	import datePop from '../components/datePop'
 
 	export default{
 		data(){
@@ -166,11 +168,13 @@
 					'gender':'',
 					'birth':''
 				},
-				gender:['male','female']
+				gender:['male','female'],
+				popId:'birthdate'
 			}
 		},
 		components:{
-			'nav-header':navHeader
+			'nav-header':navHeader,
+			'date-pop':datePop
 		},
 		mounted(){
 			this.$http.get('/api/users').then((data) =>{
@@ -190,11 +194,14 @@
 						genderList[j].checked = 'checked';
 					}
 				}
-			})
+			});
 		},
 		methods:{
 			select:function(item){
 				this.info.gender = item;
+			},
+			selectDate:function(id){
+				// this.popId = id;
 			}
 		}
 	}
