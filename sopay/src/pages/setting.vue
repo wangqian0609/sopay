@@ -44,7 +44,7 @@
 					}
 					&:after{
 						content: "\e64f";
-						font-family:"iconfont" !important;
+						font-family:"iconfonts" !important;
 						font-size:.14rem;
 						font-style:normal;
 						color:#666;

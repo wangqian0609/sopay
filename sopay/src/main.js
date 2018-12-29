@@ -8,6 +8,11 @@ Vue.config.productionTip = false
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+import ElementUi from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/icon.css';
+Vue.use(ElementUi)
+
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',

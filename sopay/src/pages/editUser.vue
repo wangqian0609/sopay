@@ -6,16 +6,18 @@
 				<ul>
 					<li>
 						<div class="icon">
-							<div class="iconfont">&#xe65d;</div>
+							<div class="iconfont">&#xe65f;</div>
 						</div>
-						<input type="text" v-model="info.name">
+						<el-upload :action="imgupload" class="avatar-uploader" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload" :auto-upload="false" :on-change="getImgurl">
+							<img v-if="info.imgs" :src="info.imgs" class="avatar">
+							<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+						</el-upload>
 					</li>
 					<li>
 						<div class="icon">
-							<div class="iconfont">&#xe65f;</div>
+							<div class="iconfont">&#xe65d;</div>
 						</div>
-						<img :src= "info.imgs">
-						<input type="file" name="">
+						<input type="text" v-model="info.name">
 					</li>
 					<li>
 						<div class="icon">
@@ -27,7 +29,7 @@
 						<div class="icon">
 							<div class="iconfont">&#xe639;</div>
 						</div>
-						<input id="birthdate" type="text" v-model="info.birth">
+						<el-date-picker v-model="info.birth" type="date" placeholder="info.birth"></el-date-picker>
 					</li>
 					<li>
 						<div class="icon">
@@ -43,10 +45,9 @@
 				</ul>
 			</form>
 			<div class="changeBtn">
-				<input type="button" value="Change">
+				<input type="button" value="Change" @click="changeInfo">
 			</div>
 		</div>
-		<date-pop :el = "popId"></date-pop>
 	</div>
 </template>
 <style type="text/css" lang="scss">
@@ -146,7 +147,66 @@
 								}
 							}	
 						}
+						.el-input__inner{
+							border: none;
+						    height: .4rem;
+						    line-height: .4rem;
+						    background-color: transparent;
+						    font-size: .17rem;
+						    color: #A1A2A5;
+						}
+						.avatar-uploader{
+							text-align: right;
+							.el-upload{
+								border:1px solid #d9d9d9;
+								border-radius:50%;
+								cursor:pointer;
+								position:relative;
+								overflow:hidden;
+								&:hover{
+									border-color:#409EFF;
+								}
+							}
+							.avatar{
+								width:.74rem;
+								height:.74rem;
+								display:block;
+							}
+							.avatar-uploader-icon{
+								font-size:.28rem;
+								color:#8c939d;
+								width:.74rem;
+								height:.74rem;
+								line-height:.34rem;
+								text-align:center;
+							}
+						}
+						&:first-child{
+							height:.8rem;
+							.icon{
+								top:.2rem;
+							}
+						}
 					}
+				}
+			}
+			.changeBtn{
+				width:100%;
+				padding:0 .2rem;
+				margin-top: .9rem;
+				input[type="button"]{
+					width:100%;
+					height: .44rem;
+					line-height: .44rem;
+					background-color: #4BC2FF;
+					border: none;
+					border-radius: .22rem;
+					display:inline-block;
+					text-align:center;
+					font-size: .17rem;
+					font-family: 'Montserrat';
+					font-weight: 700;
+					color:#fff;
 				}
 			}
 		}
@@ -154,7 +214,6 @@
 </style>
 <script type="text/javascript">
 	import navHeader from '../components/Hheader'
-	import datePop from '../components/datePop'
 
 	export default{
 		data(){
@@ -169,12 +228,12 @@
 					'birth':''
 				},
 				gender:['male','female'],
-				popId:'birthdate'
+				imgupload:'http://localhost:8081/api/users',
+				imageFile:'',
 			}
 		},
 		components:{
 			'nav-header':navHeader,
-			'date-pop':datePop
 		},
 		mounted(){
 			this.$http.get('/api/users').then((data) =>{
@@ -200,8 +259,30 @@
 			select:function(item){
 				this.info.gender = item;
 			},
-			selectDate:function(id){
-				// this.popId = id;
+			handleAvatarSuccess(res,file){
+				this.info.imgs = URL.createObjectURL(file.raw);
+			},
+			beforeAvatarUpload(file){
+				let isJPG = false;
+				if(file.type == "image/jpeg" || file.type == "image/png"){
+					isJPG = true;
+				}
+				const isLt2M = file.size / 1024 / 2014 < 2;
+				if (!isJPG) {
+		          this.$message.error('上传头像图片只能是 JPG 格式!');
+		        }
+		        if (!isLt2M) {
+		          this.$message.error('上传头像图片大小不能超过 2MB!');
+		        }
+		        return isJPG && isLt2M;
+			},
+			getImgurl:function(file){
+				console.log(file);
+				this.info.imgs = file.name;
+			},
+			changeInfo:function(){
+				console.log(this.info);
+				this.$router.push({name:'Account',params:{user:this.logger}})
 			}
 		}
 	}

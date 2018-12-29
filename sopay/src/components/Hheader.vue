@@ -129,12 +129,12 @@
 		data(){
 			return{
 				FuncList:[
-					{name:'SHOP',icon:"icon-shoppingcar",function:'Home'},
-					{name:'OFFERS',icon:"icon-star",function:'Collect'},
-					{name:'ORDERS',icon:"icon-label",function:'Order'},
-					{name:'CART',icon:"icon-shopping",function:'Cart'},
-					{name:'ACCOUNT',icon:"icon-user",function:'Account'},
-					{name:'SETTINGS',icon:"icon-setting",function:'Setting'}
+					{name:'SHOP',icon:"icons-shoppingcar",function:'Home'},
+					{name:'OFFERS',icon:"icons-star",function:'Collect'},
+					{name:'ORDERS',icon:"icons-label",function:'Order'},
+					{name:'CART',icon:"icons-shopping",function:'Cart'},
+					{name:'ACCOUNT',icon:"icons-user",function:'Account'},
+					{name:'SETTINGS',icon:"icons-setting",function:'Setting'}
 				],
 				lists:false,
 				logger:this.$route.params.user,

@@ -68,7 +68,7 @@
 			bottom:.68rem;
 		}
 		.goodsCollect{
-			font-family:"iconfont" !important;
+			font-family:"iconfonts" !important;
 			font-size:.3rem;
 			color:#666;
 			font-style:normal;

@@ -177,6 +177,7 @@ Mdate.prototype = {
     },
     refreshScroll: function() {
         var that = this;
+        debugger;
         var inputYear = that.acceptId.getAttribute("data-year");
         var inputMonth = that.acceptId.getAttribute("data-month");
         var inputDay = that.acceptId.getAttribute("data-day");

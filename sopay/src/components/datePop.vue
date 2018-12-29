@@ -367,9 +367,9 @@
 		        })
 		    },
 		    refreshScroll: function() {
-		        var inputYear = this.acceptId.getAttribute("data-year");
-		        var inputMonth = this.acceptId.getAttribute("data-month");
-		        var inputDay = this.acceptId.getAttribute("data-day");
+		        var inputYear = this.mdate.acceptId.getElementById("data-year");
+		        var inputMonth = this.mdate.acceptId.getElementById("data-month");
+		        var inputDay = this.mdate.acceptId.getElementById("data-day");
 		        inputYear = inputYear || this.dateopts.beginYear;
 		        inputMonth = inputMonth || this.dateopts.beginMonth;
 		        inputDay = inputDay || this.dateopts.beginDay;
